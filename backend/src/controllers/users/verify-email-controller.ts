@@ -171,8 +171,12 @@ export class VerifyEmailController {
         </html>
       `
 
-      const statusCode = error.message === "Invalid or expired verification token" ? 400 : 500;
-      return rep.status(statusCode).type('text/html').send(errorHtml)
+      switch (error.message) {
+        case "Invalid or expired verification token":
+          return rep.status(400).type('text/html').send(errorHtml)      
+        default:
+          return rep.status(500).type('text/html').send(errorHtml)      
+      }
     }
   }
 }
