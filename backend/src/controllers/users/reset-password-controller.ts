@@ -8,6 +8,10 @@ export class ResetPasswordController {
 
     const { id } = req.user as Pick<User, 'id'>
 
+    if (!id) {
+      return rep.status(400).send({ error: "The id is missing" })
+    }
+
     const resetPasswordValidate = z.object({
       old_password: z.string({ error: "The value has entered isn't a email" }),
       new_password: z.string({ error: "The value has entered isn't a email" })
