@@ -42,7 +42,7 @@ export class CreateUserController {
       const createUserService = new CreateUserService()
       await createUserService.execute({ email, password: hashedPassword, username })
 
-      return rep.status(201).send({ message: "User Created" })
+      return rep.status(201).send({ message: "Please check your email to verify your account" })
     } catch (error: any) {
       switch (error.message) {
         case "The email is already in use":

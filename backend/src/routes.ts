@@ -7,6 +7,7 @@ import { DeleteUserController } from "./controllers/users/delete-user-controller
 import { createUserSchema } from "./swagger/schemas/users/create-user-schema.js";
 import { deleteUserSchema } from "./swagger/schemas/users/delete-user-schema.js";
 import { authUserSchema } from "./swagger/schemas/users/auth-user-schema.js";
+import { VerifyEmailController } from "./controllers/users/verify-email-controller.js";
 
 export async function routes(fastify: FastifyTypedInstance) {
   fastify.get("/", async (req: FastifyRequest, rep: FastifyReply) => {
@@ -17,11 +18,15 @@ export async function routes(fastify: FastifyTypedInstance) {
     return new CreateUserController().handle(req, rep)
   })
 
-  fastify.post("/auth-user",{ schema: authUserSchema }, async (req: FastifyRequest, rep: FastifyReply) => {
+  fastify.post("/auth-user", { schema: authUserSchema }, async (req: FastifyRequest, rep: FastifyReply) => {
     return new AuthUserController().handle(req, rep)
   })
 
   fastify.delete("/delete-user", { preHandler: [authentication], schema: deleteUserSchema }, async (req: FastifyRequest, rep: FastifyReply) => {
     return new DeleteUserController().handle(req, rep)
+  })
+
+  fastify.get('/verify-email', async (req: FastifyRequest, rep: FastifyReply) => {
+    return new VerifyEmailController().handle(req, rep)
   })
 }
