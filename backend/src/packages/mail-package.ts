@@ -15,14 +15,13 @@ const transporter = createTransport({
 	},
 })
 
-
 export async function sendVerificationEmail(email: string, username: string, token: string) {
-	const verificationUrl = `localhost:3333/verify-email?token=${token}`
+	const verificationUrl = `http://localhost:3333/verify-email?token=${token}`
 
 	const htmlTemplate = getVerificationEmailTemplate(username, verificationUrl)
 
 	const mailOptions = {
-		from: `"Sua Aplicação" <${process.env.EMAIL_USER}>`,
+		from: `"Hisui" <${process.env.EMAIL_USER}>`,
 		to: email,
 		subject: 'Verifique sua conta',
 		html: htmlTemplate,
@@ -64,39 +63,52 @@ function getVerificationEmailTemplate(username: string, verificationUrl: string)
       margin: 0;
       padding: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f4f4f4;
+      background-color: hsla(0, 0%, 96%, 1.00);
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    /* CORREÇÃO 2: Melhor centralização para clientes de email */
+    .email-wrapper {
+      width: 100%;
+      background-color: hsla(0, 0%, 96%, 1.00);
+      padding: 0;
+      margin: 0;
     }
 
     .container {
       width: 100%;
-      padding: 40px 0;
-      display: flex;
-      justify-content: center;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 40px 20px;
     }
 
     .card {
-      width: 600px;
-      background-color: #ffffff;
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: hsla(0, 0%, 100%, 1.00);
       border-radius: 12px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       overflow: hidden;
     }
 
     .card-header {
-      background: linear-gradient(135deg, #0fbc48ff 0%, #025623ff 100%);
+      background: linear-gradient(135deg, hsla(140, 85%, 40%, 1.00) 0%, rgba(2, 86, 35, 1) 100%);
       padding: 40px 30px;
       text-align: center;
     }
 
     .card-header h1 {
-      color: #ffffff;
+      color: hsla(0, 0%, 100%, 1.00);
       font-size: 28px;
       font-weight: 600;
+      margin: 0;
     }
 
     .card-header p {
-      color: #ffffff;
-      margin-top: 10px;
+      color: hsla(0, 0%, 100%, 1.00);
+      margin: 10px 0 0 0;
       font-size: 16px;
       opacity: 0.9;
     }
@@ -107,55 +119,65 @@ function getVerificationEmailTemplate(username: string, verificationUrl: string)
     }
 
     .card-body h2 {
-      color: #333333;
-      margin-bottom: 20px;
+      color: hsla(0, 0%, 20%, 1.00);
+      margin: 0 0 20px 0;
       font-size: 24px;
       font-weight: 500;
     }
 
     .card-body p {
-      color: #666666;
-      margin-bottom: 30px;
+      color: hsla(0, 0%, 40%, 1.00);
+      margin: 0 0 30px 0;
       font-size: 16px;
       line-height: 1.6;
     }
 
+    /* CORREÇÃO 3: Melhorar compatibilidade do botão */
+    .btn-container {
+      text-align: center;
+      margin: 20px 0;
+    }
+
     .btn {
       display: inline-block;
-      background: linear-gradient(135deg, #7eea66ff 0%, #4ba24cff 100%);
-      color: #ffffff;
-      text-decoration: none;
+      background: linear-gradient(135deg, hsla(109, 76%, 66%, 1.00) 0%, hsla(121, 37%, 47%, 1.00) 100%);
+      color: #ffffff !important;
+      text-decoration: none !important;
       padding: 16px 32px;
       border-radius: 50px;
       font-weight: 600;
       font-size: 16px;
-      margin: 20px 0;
       transition: transform 0.2s ease;
-      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+      box-shadow: 0 4px 15px hsla(229, 76%, 66%, 0.40);
+      border: none;
+      cursor: pointer;
     }
 
     .btn:hover {
       transform: translateY(-2px);
+      color: #ffffff !important;
+      text-decoration: none !important;
     }
 
     .link-info {
-      color: #999999;
+      color: hsla(0, 0%, 60%, 1.00);
       margin: 30px 0 20px 0;
       font-size: 14px;
       line-height: 1.5;
     }
 
     .link-box {
-      background-color: #f8f9fa;
+      background-color: hsla(210, 17%, 98%, 1.00);
       padding: 15px;
       border-radius: 8px;
-      border-left: 4px solid #667eea;
+      border-left: 4px solid hsla(126, 76%, 66%, 1.00);
       margin: 20px 0;
       word-break: break-all;
+      text-align: left;
     }
 
     .link-box a {
-      color: #667eea;
+      color: hsla(126, 76%, 66%, 1.00);
       text-decoration: none;
       font-size: 14px;
     }
@@ -192,40 +214,73 @@ function getVerificationEmailTemplate(username: string, verificationUrl: string)
       color: #6c757d;
       font-size: 12px;
     }
+
+    @media only screen and (max-width: 600px) {
+      .container {
+        padding: 20px 10px;
+      }
+      
+      .card {
+        border-radius: 8px;
+      }
+      
+      .card-header,
+      .card-body,
+      .card-footer {
+        padding: 30px 20px;
+      }
+      
+      .card-header h1 {
+        font-size: 24px;
+      }
+      
+      .card-body h2 {
+        font-size: 20px;
+      }
+      
+      .btn {
+        padding: 14px 28px;
+        font-size: 15px;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="card">
-      <div class="card-header">
-        <h1>🎉 Bem-vindo!</h1>
-        <p>Verifique sua conta para começar</p>
-      </div>
-
-      <div class="card-body">
-        <h2>Olá, ${username}!</h2>
-        <p>
-          Obrigado por se cadastrar em nossa plataforma! Para concluir seu cadastro e começar a usar todos os recursos, você precisa verificar seu endereço de email.
-        </p>
-
-        <a href="${verificationUrl}" class="btn">✅ Verificar Email</a>
-
-        <p class="link-info">
-          Se o botão não funcionar, copie e cole este link no seu navegador:
-        </p>
-
-        <div class="link-box">
-          <a href="${verificationUrl}">${verificationUrl}</a>
+  <div class="email-wrapper">
+    <div class="container">
+      <div class="card">
+        <div class="card-header">
+          <h1>🎉 Bem-vindo!</h1>
+          <p>Verifique sua conta para começar</p>
         </div>
 
-        <div class="warning">
-          <p>⏰ Este link expira em 24 horas</p>
-        </div>
-      </div>
+        <div class="card-body">
+          <h2>Olá, ${username}!</h2>
+          <p>
+            Obrigado por se cadastrar em nossa plataforma! Para concluir seu cadastro e começar a usar todos os recursos, você precisa verificar seu endereço de email.
+          </p>
 
-      <div class="card-footer">
-        <p>Se você não se cadastrou em nossa plataforma, pode ignorar este email.</p>
-        <small>© 2024 Sua Aplicação. Todos os direitos reservados.</small>
+          <div class="btn-container">
+            <a href="${verificationUrl}" class="btn">✅ Verificar Email</a>
+          </div>
+
+          <p class="link-info">
+            Se o botão não funcionar, copie e cole este link no seu navegador:
+          </p>
+
+          <div class="link-box">
+            <a href="${verificationUrl}">${verificationUrl}</a>
+          </div>
+
+          <div class="warning">
+            <p>⏰ Este link expira em 24 horas</p>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <p>Se você não se cadastrou em nossa plataforma, pode ignorar este email.</p>
+          <small>© ${new Date().getFullYear()} Sua Aplicação. Todos os direitos reservados.</small>
+        </div>
       </div>
     </div>
   </div>
