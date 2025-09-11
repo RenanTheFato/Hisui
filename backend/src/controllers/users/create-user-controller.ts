@@ -7,21 +7,19 @@ export class CreateUserController {
   async handle(req: FastifyRequest, rep: FastifyReply) {
 
     const userValidate = z.object({
-      email: z.email({ message: "The value has entered isn't a email or the email is invalid." })
-        .min(2, { message: "The email doesn't meet the minimum number of characters (2)." }),
+      email: z.email({ error: "The value has entered isn't a email or the email is invalid." })
+        .min(2, { error: "The email doesn't meet the minimum number of characters (2)." }),
       password: z.string()
-        .min(8, { message: "The password doesn't meet the minimum number of characters (8)." })
-        .max(128, { message: "The password has exceeded the character limit (128)." })
-        .refine((password) => /[A-Z]/.test(password), { message: "Password must contain at least one uppercase letter." })
-        .refine((password) => /[0-9]/.test(password), { message: "Password must contain at least one number." })
-        .refine((password) => /[@#$*&]/.test(password), { message: "Password must contain at least one of this special characters ('@' '#' '$' '*' '&')." }),
+        .min(8, { error: "The password doesn't meet the minimum number of characters (8)." })
+        .max(128, { error: "The password has exceeded the character limit (128)." })
+        .refine((password) => /[A-Z]/.test(password), { error: "Password must contain at least one uppercase letter." })
+        .refine((password) => /[0-9]/.test(password), { error: "Password must contain at least one number." })
+        .refine((password) => /[@#$*&]/.test(password), { error: "Password must contain at least one of this special characters ('@' '#' '$' '*' '&')." }),
       username: z.string()
-        .min(2, { message: "The name doesn't meet the minimum number of characters (2)." })
-        .max(128, { message: "The name has exceeded the character limit (128)." }),
+        .min(2, { error: "The name doesn't meet the minimum number of characters (2)." })
+        .max(128, { error: "The name has exceeded the character limit (128)." }),
     })
-
-    const { email, password, username } = req.body as z.infer<typeof userValidate>
-
+    
     try {
       userValidate.parse(req.body)
     } catch (error) {
@@ -31,11 +29,13 @@ export class CreateUserController {
           message: err.message,
           path: err.path.join("/"),
         }))
-
+        
         return rep.status(400).send({ message: "Validation Error Ocurred", errors })
       }
     }
 
+    const { email, password, username } = req.body as z.infer<typeof userValidate>
+    
     const hashedPassword = await hash(password, 10)
 
     try {
