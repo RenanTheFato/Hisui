@@ -9,6 +9,8 @@ import { deleteUserSchema } from "./swagger/schemas/users/delete-user-schema.js"
 import { authUserSchema } from "./swagger/schemas/users/auth-user-schema.js";
 import { VerifyEmailController } from "./controllers/users/verify-email-controller.js";
 import { ResetPasswordController } from "./controllers/users/reset-password-controller.js";
+import { checkAdmin } from "./middlewares/admin-middleware.js";
+import { ListAllUsersController } from "./controllers/admin/list-all-users-controller.js";
 
 export async function routes(fastify: FastifyTypedInstance) {
   fastify.get("/", async (req: FastifyRequest, rep: FastifyReply) => {
@@ -31,7 +33,11 @@ export async function routes(fastify: FastifyTypedInstance) {
     return new VerifyEmailController().handle(req, rep)
   })
 
-  fastify.patch("/reset-password", { preHandler: [authentication] }, async(req: FastifyRequest, rep: FastifyReply) => {
+  fastify.patch("/reset-password", { preHandler: [authentication] }, async (req: FastifyRequest, rep: FastifyReply) => {
     return new ResetPasswordController().handle(req, rep)
+  })
+
+  fastify.get("/list-users", { preHandler: [authentication, checkAdmin] }, async (req: FastifyRequest, rep: FastifyReply) => {
+    return new ListAllUsersController().handle(req, rep)
   })
 }
