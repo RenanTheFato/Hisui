@@ -40,7 +40,7 @@ export class CreateUserController {
 
     try {
       const createUserService = new CreateUserService()
-      await createUserService.execute({ email, password: hashedPassword, username })
+      await createUserService.execute({ email, password_hash: hashedPassword, username })
 
       return rep.status(201).send({ message: "Please check your email to verify your account" })
     } catch (error: any) {

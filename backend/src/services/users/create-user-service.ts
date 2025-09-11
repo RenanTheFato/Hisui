@@ -3,7 +3,7 @@ import { prisma } from "../../config/prisma.js";
 import { generateVerificationToken, getTokenExpiration, sendVerificationEmail } from "../../packages/mail-package.js";
 
 export class CreateUserService{
-  async execute({ email, password, username }: Pick<User, 'email' | 'password' | 'username'>){
+  async execute({ email, password_hash, username }: Pick<User, 'email' | 'password_hash' | 'username'>){
 
     const isEmailAlreadyRegister = await prisma.users.findFirst({
       where: {
@@ -22,7 +22,7 @@ export class CreateUserService{
     await prisma.users.create({
       data: {
         email,
-        password_hash: password,
+        password_hash,
         username,
         verification_token: verificationToken,
         verification_token_expires: tokenExpires,
