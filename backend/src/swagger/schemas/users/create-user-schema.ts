@@ -16,7 +16,7 @@ const internalErrorSchema = z.object({
 }).describe("Unexpected internal server error.");
 
 export const createUserSchema = {
-  tags: ["User"],
+  tags: ["user"],
   summary: "Create a new user account",
   description: "Registers a new user by validating the provided credentials, hashing the password, and storing the user in the system.",
   body: z.object({
