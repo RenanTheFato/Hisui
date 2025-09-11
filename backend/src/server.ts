@@ -23,7 +23,7 @@ async function start() {
     openapi: {
       openapi: '3.1.1',
       info: {
-        title: 'Financial System',
+        title: 'Hisui',
         version: '0.0.1',
       },
       components: {
@@ -41,7 +41,7 @@ async function start() {
   await server.register(fastifySwaggerUi, {
     routePrefix: '/docs',
     theme: {
-      title: 'Financial System Api Docs',
+      title: 'Hisui Api Docs',
     },
   })
   
