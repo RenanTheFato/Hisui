@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx --watch ./src/server.ts"
+    "dev": "tsx --watch ./src/server.ts",
+    "build": "tsc",
+    "test": "vitest"
   },
   "keywords": [],
   "author": "Renan Dias Santos de Santana, Arthur Roberto Weege Pontes e Guilherme Silveira Fernandes da Silva",
