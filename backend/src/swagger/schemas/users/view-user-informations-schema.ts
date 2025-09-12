@@ -10,12 +10,12 @@ export const viewUserInformationsSchema = {
       message: z.string().describe("Success message."),
       user: z.object({
         id: z.string().describe("Unique identifier of the user."),
-        name: z.string().describe("User's full name."),
+        username: z.string().describe("User's full name."),
         email: z.email().describe("User's email address."),
         role: z.string().describe("User's role (e.g. ADMIN or USER)."),
         is_verified: z.boolean().describe("User Status"),
-        created_at: z.iso.date().describe("Account creation timestamp."),
-        updated_at: z.iso.date().describe("Last update timestamp."),
+        created_at: z.date().describe("Account creation timestamp."),
+        updated_at: z.date().describe("Last update timestamp."),
       }),
     }).describe("User data successfully fetched."),
 
