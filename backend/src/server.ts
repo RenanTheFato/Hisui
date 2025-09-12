@@ -2,9 +2,9 @@ import { validatorCompiler, serializerCompiler, ZodTypeProvider, jsonSchemaTrans
 import { fastifySwaggerUi } from "@fastify/swagger-ui";
 import { fastifySwagger } from "@fastify/swagger";
 import { fastify } from "fastify";
-import { routes } from "./routes.js";
 import dotenv from "dotenv";
 import cors from "@fastify/cors";
+import { routes } from "./routes/index.js";
 
 dotenv.config()
 

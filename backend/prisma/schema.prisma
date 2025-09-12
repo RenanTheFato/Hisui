@@ -20,7 +20,7 @@ model Users {
   role Role @default(USER)
   is_verified Boolean @default(false)
   verification_token String? @unique
-  verification_token_expires DateTime?  
+  verification_token_expires DateTime?
 
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
