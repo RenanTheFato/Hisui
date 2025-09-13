@@ -6,6 +6,7 @@ dotenv.config()
 
 const EMAIL = process.env.EMAIL_USER
 const PASSWORD = process.env.EMAIL_PASS
+const BACKEND_ADDRESS = process.env.BACKEND_URL
 
 const transporter = createTransport({
 	service: 'gmail',
@@ -16,7 +17,7 @@ const transporter = createTransport({
 })
 
 export async function sendVerificationEmail(email: string, username: string, token: string) {
-	const verificationUrl = `http://localhost:3333/verify-email?token=${token}`
+	const verificationUrl = `http://${BACKEND_ADDRESS}/verify-email?token=${token}`
 
 	const htmlTemplate = getVerificationEmailTemplate(username, verificationUrl)
 
@@ -64,11 +65,10 @@ function getVerificationEmailTemplate(username: string, verificationUrl: string)
       padding: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: hsla(0, 0%, 96%, 1.00);
-      width: 100% !important;
-      height: 100% !important;
+      width: 100%;
+      height: 100%;
     }
 
-    /* CORREÇÃO 2: Melhor centralização para clientes de email */
     .email-wrapper {
       width: 100%;
       background-color: hsla(0, 0%, 96%, 1.00);
@@ -132,7 +132,6 @@ function getVerificationEmailTemplate(username: string, verificationUrl: string)
       line-height: 1.6;
     }
 
-    /* CORREÇÃO 3: Melhorar compatibilidade do botão */
     .btn-container {
       text-align: center;
       margin: 20px 0;
@@ -141,8 +140,8 @@ function getVerificationEmailTemplate(username: string, verificationUrl: string)
     .btn {
       display: inline-block;
       background: linear-gradient(135deg, hsla(109, 76%, 66%, 1.00) 0%, hsla(121, 37%, 47%, 1.00) 100%);
-      color: #ffffff !important;
-      text-decoration: none !important;
+      color: #ffffff;
+      text-decoration: none;
       padding: 16px 32px;
       border-radius: 50px;
       font-weight: 600;
@@ -155,8 +154,8 @@ function getVerificationEmailTemplate(username: string, verificationUrl: string)
 
     .btn:hover {
       transform: translateY(-2px);
-      color: #ffffff !important;
-      text-decoration: none !important;
+      color: #ffffff;
+      text-decoration: none;
     }
 
     .link-info {
@@ -177,7 +176,7 @@ function getVerificationEmailTemplate(username: string, verificationUrl: string)
     }
 
     .link-box a {
-      color: hsla(126, 76%, 66%, 1.00);
+      color: hsla(0, 0%, 0%, 1.00);
       text-decoration: none;
       font-size: 14px;
     }
@@ -261,7 +260,7 @@ function getVerificationEmailTemplate(username: string, verificationUrl: string)
           </p>
 
           <div class="btn-container">
-            <a href="${verificationUrl}" class="btn">✅ Verificar Email</a>
+            <a href="${verificationUrl}" class="btn"> Verificar Email</a>
           </div>
 
           <p class="link-info">
@@ -273,7 +272,7 @@ function getVerificationEmailTemplate(username: string, verificationUrl: string)
           </div>
 
           <div class="warning">
-            <p>⏰ Este link expira em 24 horas</p>
+            <p> Este link expira em 24 horas</p>
           </div>
         </div>
 
