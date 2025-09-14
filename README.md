@@ -61,17 +61,17 @@ Esse projeto se encaixa como base de uma startup tecnológica, fornecendo um eco
 - **Node.js**: versão `>=22.17.0`  
 - **Poetry** (para dependências Python, caso utilize os módulos de análise)
 
-## Gerar o Banco de Dados
-
-```bash
-npx prisma migrate dev --name init
-```
-
 ## Backend NodeJs
 
 ```bash
 # Instalar dependências do projeto
-npm install 
+npm install
+```
+
+## Gerar o Banco de Dados
+
+```bash
+npx prisma migrate dev --name init
 ```
 
 ```bash
