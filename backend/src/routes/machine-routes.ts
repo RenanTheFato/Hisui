@@ -4,6 +4,8 @@ import { GetPythonServerStatusController } from "../controllers/machine/admin/ge
 import { PredictPETR4Controller } from "../controllers/machine/petr4/predict-petr4-controller.js";
 import { predictPETR4Schema } from "../swagger/schemas/machine/petr4/petr4-prediction-schema.js";
 import { authentication } from "../middlewares/auth-middleware.js";
+import { getPETR4MetricsSchema } from "../swagger/schemas/machine/petr4/get-petr4-metrics-schema.js";
+import { GetPETR4MetricsController } from "../controllers/machine/petr4/get-petr4-metrics-controller.js";
 
 export async function machineRoutes(fastify: FastifyTypedInstance) {
   fastify.get("/check-python", async (req: FastifyRequest, rep: FastifyReply) => {
@@ -12,5 +14,9 @@ export async function machineRoutes(fastify: FastifyTypedInstance) {
 
   fastify.post("/machine/predict-petr4", { preHandler: [authentication], schema: predictPETR4Schema }, async (req: FastifyRequest, rep: FastifyReply) => {
     return new PredictPETR4Controller().handle(req, rep)
+  })
+
+  fastify.get("/machine/petr4-metrics", { preHandler: [authentication], schema: getPETR4MetricsSchema }, async (req: FastifyRequest, rep: FastifyReply) => {
+    return new GetPETR4MetricsController().handle(req, rep)
   })
 }
