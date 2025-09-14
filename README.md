@@ -68,9 +68,8 @@ Esse projeto se encaixa como base de uma startup tecnológica, fornecendo um eco
 npm install
 ```
 
-## Gerar o Banco de Dados
-
 ```bash
+# Gerar o Banco de Dados
 npx prisma migrate dev --name init
 ```
 
