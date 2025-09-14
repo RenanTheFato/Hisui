@@ -152,6 +152,15 @@ poetry run start-server
     ```
 ---
 
+  ## 👨‍💼Acesso a Rotas Administrativas 
+
+  Para acessar rotas administrativas irá precisar atualizar um usuário no banco de dados para que contenha o cargo ADMIN
+
+  ```sql
+  UPDATE USERS SET "role" = 'ADMIN' WHERE "id" = 'seu_id_de_usuario';
+  ```
+---
+
  ## 📄 Documentação
 
   A documentação foi feita via **Swagger** e pode ser acessada ao iniciar o servidor acessando a rota **/docs** em seu navegador
