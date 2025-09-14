@@ -1,5 +1,5 @@
-import { User } from "../../@types/interfaces/user-interface.js";
 import { prisma } from "../../config/prisma.js";
+import { User } from "../../models/user-model.js";
 
 export class ViewUserInformationService{
   async execute({ id }: Pick<User, 'id'>){

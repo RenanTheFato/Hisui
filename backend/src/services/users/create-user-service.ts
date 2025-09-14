@@ -1,5 +1,5 @@
-import { User } from "../../@types/interfaces/user-interface.js";
 import { prisma } from "../../config/prisma.js";
+import { User } from "../../models/user-model.js";
 import { generateVerificationToken, getTokenExpiration, sendVerificationEmail } from "../../packages/mail-package.js";
 
 export class CreateUserService{

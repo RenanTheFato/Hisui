@@ -1,10 +1,10 @@
 import { compare } from "bcryptjs";
-import { User } from "../../@types/interfaces/user-interface.js";
 import { prisma } from "../../config/prisma.js";
 import jwt from "jsonwebtoken";
+import { User } from "../../models/user-model.js";
 
 export class AuthUserService{
-  async execute({ email, password }: Pick<User, 'email' | 'password'>){
+  async execute({ email, password_hash }: Pick<User, 'email' | 'password_hash'>){
     
     const isUserExists = await prisma.users.findFirst({
       where: {
@@ -16,7 +16,7 @@ export class AuthUserService{
       throw new Error("Invalid email or password")
     }
 
-    const checkPassword = await compare(password, isUserExists.password_hash)
+    const checkPassword = await compare(password_hash, isUserExists.password_hash)
 
     if (!checkPassword) {
       throw new Error("Invalid email or password")

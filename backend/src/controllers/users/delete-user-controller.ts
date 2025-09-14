@@ -1,6 +1,6 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { DeleteUserService } from "../../services/users/delete-user-service.js";
-import { User } from "../../@types/interfaces/user-interface.js";
+import { User } from "../../models/user-model.js";
 
 export class DeleteUserController {
   async handle(req: FastifyRequest, rep: FastifyReply) {

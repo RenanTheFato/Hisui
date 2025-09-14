@@ -1,6 +1,6 @@
-import { User } from "../../@types/interfaces/user-interface.js";
 import { prisma } from "../../config/prisma.js";
 import bcrypt from "bcryptjs";
+import { User } from "../../models/user-model.js";
 
 interface ResetPasswordProps{
   old_password: string,

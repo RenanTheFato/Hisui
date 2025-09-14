@@ -1,6 +1,6 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { User } from "../../@types/interfaces/user-interface.js";
 import { ViewUserInformationService } from "../../services/users/view-user-informations-service.js";
+import { User } from "../../models/user-model.js";
 
 export class ViewUserInformationsController{
   async handle(req: FastifyRequest, rep: FastifyReply){

@@ -28,7 +28,7 @@ export class AuthUserController {
 
     try {
       const authService = new AuthUserService()
-      const token = await authService.execute({ email, password })
+      const token = await authService.execute({ email, password_hash: password })
       return rep.status(200).send({ token })
     } catch (error: any) {
       switch (error.message) {

@@ -1,7 +1,7 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { User } from "../../@types/interfaces/user-interface.js";
 import { z } from "zod/v4";
 import { ResetPasswordService } from "../../services/users/reset-password-service.js";
+import { User } from "../../models/user-model.js";
 
 export class ResetPasswordController {
   async handle(req: FastifyRequest, rep: FastifyReply) {

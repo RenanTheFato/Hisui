@@ -1,7 +1,7 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod/v4";
 import { PredictPETR4Service } from "../../../services/machine/petr4/predict-petr4-service.js";
-import { User } from "../../../@types/interfaces/user-interface.js";
+import { User } from "../../../models/user-model.js";
 
 export class PredictPETR4Controller {
   async handle(req: FastifyRequest, rep: FastifyReply) {

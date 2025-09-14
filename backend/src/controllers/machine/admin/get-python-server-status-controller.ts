@@ -1,6 +1,6 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { GetPythonServerStatusService } from "../../../services/machine/admin/get-python-server-status-service.js";
-import { User } from "../../../@types/interfaces/user-interface.js";
+import { User } from "../../../models/user-model.js";
 
 export class GetPythonServerStatusController {
   async handle(req: FastifyRequest, rep: FastifyReply) {

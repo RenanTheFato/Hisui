@@ -1,5 +1,5 @@
 import { prisma } from "../../config/prisma.js";
-import { User } from "../../@types/interfaces/user-interface.js";
+import { User } from "../../models/user-model.js";
 
 export class DeleteUserService {
   async execute({ id }: Pick<User, 'id'>) {

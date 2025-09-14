@@ -1,6 +1,6 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { User } from "../../../@types/interfaces/user-interface.js";
 import { ViewPETR4ModelInfoService } from "../../../services/machine/admin/view-petr4-model-info-service.js";
+import { User } from "../../../models/user-model.js";
 
 export class ViewPETR4ModelInfoController {
   async handle(req: FastifyRequest, rep: FastifyReply) {
