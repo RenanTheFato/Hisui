@@ -1,6 +1,6 @@
 import { FastifyRequest, FastifyReply } from "fastify";
 import { FastifyTypedInstance } from "../@types/fastify-types.js";
-import { GetPythonServerStatusController } from "../controllers/machine/get-python-server-status-controller.js";
+import { GetPythonServerStatusController } from "../controllers/machine/admin/get-python-server-status-controller.js";
 import { PredictPETR4Controller } from "../controllers/machine/petr4/predict-petr4-controller.js";
 import { predictPETR4Schema } from "../swagger/schemas/machine/petr4/petr4-prediction-schema.js";
 import { authentication } from "../middlewares/auth-middleware.js";

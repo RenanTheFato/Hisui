@@ -25,7 +25,7 @@ export class PredictPETR4Service {
       return await response.json()
 
     } catch (error: any) {
-      throw new Error("Failed to get prediction from Python server")
+      throw new Error(`Failed to get prediction from Python server: ${error.message}`)
     }
   }
 }
