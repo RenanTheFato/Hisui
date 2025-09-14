@@ -2,12 +2,10 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { prisma } from "../config/prisma.js";
 import { app } from "../config/server.test.js";
 import { routes } from "../routes/index.js";
-import { execSync } from "child_process";
 
 describe("Create User", async () => {
-  beforeAll(async () => {    
+  beforeAll(async () => {
     await app.register(routes)
-    execSync('npx prisma db push --force-reset', { stdio: 'inherit' });
   })
 
   afterAll(async () => {

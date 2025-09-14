@@ -6,7 +6,7 @@ export class AuthUserController {
   async handle(req: FastifyRequest, rep: FastifyReply) {
 
     const validadeSchema = z.object({
-      email: z.email({ error: "The value entered isn't a string type and/or isn't an e-mail or the e-mail is invalid.." }),
+      email: z.email({ error: "The value entered isn't a string type and/or isn't an e-mail or the e-mail is invalid." }),
       password: z.string({ error: "The value entered isn't a string type." })
     })
 
