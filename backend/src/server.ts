@@ -4,6 +4,7 @@ import { fastifySwagger } from "@fastify/swagger";
 import { fastify } from "fastify";
 import dotenv from "dotenv";
 import cors from "@fastify/cors";
+import rateLimit from "@fastify/rate-limit";
 import { routes } from "./routes/index.js";
 
 dotenv.config()
@@ -15,6 +16,10 @@ const PORT = process.env.HTTP_PORT
 
 async function start() {
   await server.register(cors)
+  await server.register(rateLimit, {
+    max: 5000,
+    timeWindow: '1 minute'
+  })
   
   server.setValidatorCompiler(validatorCompiler)
   server.setSerializerCompiler(serializerCompiler)
