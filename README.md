@@ -156,7 +156,7 @@ poetry run start-server
 
   A documentação foi feita via **Swagger** e pode ser acessada ao iniciar o servidor acessando a rota **/docs** em seu navegador
 
-  Você pode importar as rotas para o seu cliente API (no projeto foi utilizado o insominia), acessando o arquivo:
+  Você pode importar as rotas para o seu cliente API (no projeto foi utilizado o insomnia), acessando o arquivo:
 
   - <u><a href="./insomnia.json">Rotas API em arquivo .json</a></u>
 ---
