@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 
 export const viewPETR4ModelInfoSchema = {
-  tags: ["admin", "prediction"],
+  tags: ["admin", "models"],
   summary: "View PETR4 Model Information",
   description: "Fetches detailed information about the PETR4 prediction model, including data quality, features, training details, and performance. Requires ADMIN role.",
   security: [
