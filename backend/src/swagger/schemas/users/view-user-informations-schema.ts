@@ -4,16 +4,40 @@ export const viewUserInformationsSchema = {
   tags: ["user", "profile"],
   summary: "View authenticated user information",
   description: "Fetches the profile data of the currently authenticated user. Requires a valid JWT token.",
-  security: [{ bearerAuth: [] }],
+  security: [
+    {
+      bearerAuth: []
+    }
+  ],
   response: {
     200: z.object({
-      message: z.string().describe("Success message."),
+      message: z.string()
+        .describe("Success message."),
       user: z.object({
-        id: z.string().describe("Unique identifier of the user."),
-        username: z.string().describe("User's full name."),
-        email: z.email().describe("User's email address."),
-        role: z.string().describe("User's role (e.g. ADMIN or USER)."),
-        is_verified: z.boolean().describe("User Status"),
+        id: z.string()
+          .describe("Unique identifier of the user.")
+          .meta({
+            example: "example_id"
+          }),
+        email: z.email().describe("User's email address.")
+          .meta({
+            example: "johndoe@email.com"
+          }),
+        username: z.string()
+          .describe("User's full name.")
+          .meta({
+            example: "johndoe"
+          }),
+        role: z.string()
+          .describe("User's role (e.g. ADMIN or USER).")
+          .meta({
+            example: "user or admin example"
+          }),
+        is_verified: z.boolean()
+          .describe("User Status")
+          .meta({
+            example: true
+          }),
         created_at: z.date().describe("Account creation timestamp."),
         updated_at: z.date().describe("Last update timestamp."),
       }),

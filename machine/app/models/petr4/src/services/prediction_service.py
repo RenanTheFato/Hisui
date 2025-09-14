@@ -289,8 +289,8 @@ class PredictionService:
 									"data_access": data_access,
 									"service_uptime": "running"
 							},
-							"version": "1.0.0",
-							"service": "PETR4 ML Prediction Server"
+							"version": "0.0.1",
+							"service": "Hisui Python Server"
 					}
 					
 			except Exception as e:

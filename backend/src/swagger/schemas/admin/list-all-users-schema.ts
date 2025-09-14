@@ -9,11 +9,30 @@ export const listAllUsersSchema = {
     200: z.object({
       message: z.string().describe("Success message."),
       users: z.array(z.object({
-        id: z.string().describe("Unique identifier of the user."),
-        username: z.string().describe("User's full name."),
-        email: z.email().describe("User's email address."),
-        role: z.string().describe("User's role (ADMIN or USER)."),
-        is_verified: z.boolean().describe("User Status"),
+        id: z.string()
+          .describe("Unique identifier of the user.")
+          .meta({
+            example: "example_id"
+          }),
+        email: z.email()
+          .describe("User's email address.")
+          .meta({
+            example: "johndoe_admin@email.com"
+          }),
+        username: z.string()
+          .describe("User's full name.")
+          .meta({
+            example: "super_admin"
+          }),
+        role: z.string()
+          .describe("User's role (ADMIN or USER).")
+          .meta({
+            example: "user or admin example"
+          }),
+        is_verified: z.boolean().describe("User Status")
+          .meta({
+            example: true
+          }),
         created_at: z.date().describe("User account creation date."),
         updated_at: z.date().describe("Last update date for the user."),
       })),

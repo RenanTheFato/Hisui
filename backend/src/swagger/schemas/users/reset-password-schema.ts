@@ -20,7 +20,7 @@ export const resetPasswordSchema = {
       .refine((password) => /[@#$*&]/.test(password), { message: "Password must contain at least one of these special characters ('@' '#' '$' '*' '&')." })
       .describe("The new password. Must follow security rules (uppercase, number, special character).")
       .meta({
-        example: "NewPassword@2024"
+        example: "NewPassword456*"
       }),
   }),
   response: {

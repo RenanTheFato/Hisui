@@ -1,9 +1,16 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod/v4";
 import { PredictPETR4Service } from "../../../services/machine/petr4/predict-petr4-service.js";
+import { User } from "../../../@types/interfaces/user-interface.js";
 
 export class PredictPETR4Controller {
   async handle(req: FastifyRequest, rep: FastifyReply) {
+    const { id } = req.user as Pick<User, 'id'>
+
+    if (!id) {
+      return rep.status(401).send({ message: "Unauthorized" })
+    }
+
     const predictValidate = z.object({
       period: z.enum(['1y', '2y', '3y', '4y', '5y', '6y', '7y', '8y'] as const,
         { error: "The period value must be one of this  values ['1y', '2y', '3y', '4y', '5y', '6y', '7y', '8y']" }),
