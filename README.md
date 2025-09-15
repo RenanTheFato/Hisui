@@ -83,6 +83,21 @@ npm run dev
 npm run test <caminho-para-arquivo-de-testes>/<arquivo de testes> 
 ```
 
+### 📧 Configurando o Nodemailer
+
+O projeto utiliza o **Nodemailer** para envio de e-mails (como notificações e validações).  
+Para que ele funcione corretamente, siga os passos abaixo:
+
+1. **Ative a autenticação de dois fatores no seu e-mail** (exemplo: Gmail).  
+2. **Gere uma senha de aplicativo** (em vez da senha principal).  
+   - Para Gmail: [Gerar senha de app](https://myaccount.google.com/apppasswords).  
+3. Configure as variáveis de ambiente no arquivo `.env`:
+
+   ```env
+   EMAIL_USER="seu_email_aqui@gmail.com"
+   EMAIL_PASS="sua_senha_de_aplicativo"
+   ```
+
 ---
 
 ## Python
