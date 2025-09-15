@@ -59,6 +59,7 @@ Esse projeto se encaixa como base de uma startup tecnológica, fornecendo um eco
 
 ### Requisitos
 - **Node.js**: versão `>=22.17.0`  
+- **Banco de Dados**: PostgreSQL
 - **Poetry** (para dependências Python, caso utilize os módulos de análise)
 
 ## Backend NodeJs
