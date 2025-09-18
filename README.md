@@ -44,6 +44,14 @@ Esse projeto se encaixa como base de uma startup tecnológica, fornecendo um eco
 
 ---
 
+## 🎥 Vídeo Sobre A Hisui
+
+Você pode acessar o conteúdo em vídeo acessando o
+<u><a href="https://drive.google.com/file/d/1ZOhK8nMM80z1wI8hHQitA7hnv9XA_hf5/view?usp=drivesdk"</a>Google Drive</u> 
+
+
+---
+
 ## 🛠️ Tecnologias Utilizadas no Backend
 - **Linguagem:** Node.js (TypeScript)  
 - **Framework:** Fastify  
