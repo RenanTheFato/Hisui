@@ -44,6 +44,14 @@ Esse projeto se encaixa como base de uma startup tecnológica, fornecendo um eco
 
 ---
 
+## 🎥 Vídeo Sobre A Hisui
+
+Você pode acessar o conteúdo em vídeo acessando o 
+<u><a href="https://drive.google.com/file/d/1ZOhK8nMM80z1wI8hHQitA7hnv9XA_hf5/view?usp=drivesdk">Google Drive</a></u>
+
+
+---
+
 ## 🛠️ Tecnologias Utilizadas no Backend
 - **Linguagem:** Node.js (TypeScript)  
 - **Framework:** Fastify  
@@ -59,13 +67,19 @@ Esse projeto se encaixa como base de uma startup tecnológica, fornecendo um eco
 
 ### Requisitos
 - **Node.js**: versão `>=22.17.0`  
+- **Banco de Dados**: PostgreSQL
 - **Poetry** (para dependências Python, caso utilize os módulos de análise)
 
 ## Backend NodeJs
 
 ```bash
 # Instalar dependências do projeto
-npm install 
+npm install
+```
+
+```bash
+# Gerar o Banco de Dados
+npx prisma migrate dev --name init
 ```
 
 ```bash
@@ -77,6 +91,21 @@ npm run dev
 # Executar um teste
 npm run test <caminho-para-arquivo-de-testes>/<arquivo de testes> 
 ```
+
+### 📧 Configurando o Nodemailer
+
+O projeto utiliza o **Nodemailer** para envio de e-mails (como notificações e validações).  
+Para que ele funcione corretamente, siga os passos abaixo:
+
+1. **Ative a autenticação de dois fatores no seu e-mail** (exemplo: Gmail).  
+2. **Gere uma senha de aplicativo** (em vez da senha principal).  
+   - Para Gmail: [Gerar senha de app](https://myaccount.google.com/apppasswords).  
+3. Configure as variáveis de ambiente no arquivo `.env`:
+
+   ```env
+   EMAIL_USER="seu_email_aqui@gmail.com"
+   EMAIL_PASS="sua_senha_de_aplicativo"
+   ```
 
 ---
 
@@ -150,6 +179,15 @@ poetry run start-server
       MODEL_RETRAIN_PERIOD=3y
       AUTO_RETRAIN=false
     ```
+---
+
+  ## 👨‍💼Acesso a Rotas Administrativas 
+
+  Para acessar rotas administrativas irá precisar atualizar um usuário no banco de dados para que contenha o cargo ADMIN
+
+  ```sql
+  UPDATE USERS SET "role" = 'ADMIN' WHERE "id" = 'seu_id_de_usuario';
+  ```
 ---
 
  ## 📄 Documentação
