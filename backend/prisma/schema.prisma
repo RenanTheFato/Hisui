@@ -13,16 +13,75 @@ enum Role {
 }
 
 model Users {
-  id String @id @default(uuid())
-  email String @unique
-  password_hash String
-  username String
-  role Role @default(USER)
-  is_verified Boolean @default(false)
-  verification_token String? @unique
+  id                         String    @id @default(uuid())
+  email                      String    @unique
+  password_hash              String
+  username                   String
+  role                       Role      @default(USER)
+  is_verified                Boolean   @default(false)
+  verification_token         String?   @unique
   verification_token_expires DateTime?
 
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
+
+  Portfolio Portfolio[]
+  Order     Order[]
+
   @@map("users")
+}
+
+model Portfolio {
+  id          String  @id @default(uuid())
+  name        String
+  description String?
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  userId String
+  user   Users  @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  assets Assets[]
+  Order  Order[]
+
+  @@map("portfolio")
+}
+
+model Assets {
+  id     String @id @default(uuid())
+  name   String
+  ticker String @unique
+  type   String
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  Portfolio Portfolio[]
+  Order     Order[]
+}
+
+enum Action {
+  BUY
+  SELL
+}
+
+model Order {
+  id                   String   @id @default(uuid())
+  action               Action
+  order_price          Decimal  @db.Decimal(10, 2)
+  amount               Decimal  @db.Decimal(16, 8)
+  order_execution_date DateTime
+
+  asset_ticker String
+  asset        Assets @relation(fields: [asset_ticker], references: [ticker], onDelete: Cascade)
+
+  userId String
+  user   Users  @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  portfolioId String
+  portfolio   Portfolio @relation(fields: [portfolioId], references: [id], onDelete: Cascade)
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 }
