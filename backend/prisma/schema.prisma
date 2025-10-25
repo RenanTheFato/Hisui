@@ -59,6 +59,8 @@ model Assets {
 
   Portfolio Portfolio[]
   Order     Order[]
+
+  @@map("assets")
 }
 
 enum Action {
@@ -84,4 +86,6 @@ model Order {
 
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
+
+  @@map("order")
 }
