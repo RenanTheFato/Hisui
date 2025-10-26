@@ -49,10 +49,14 @@ model Portfolio {
 }
 
 model Assets {
-  id     String @id @default(uuid())
-  name   String
-  ticker String @unique
-  type   String
+  id          String @id @default(uuid())
+  name        String
+  ticker      String @unique
+  type        String
+  sector      String
+  company_name String
+  country     String
+  exchange      String
 
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
@@ -72,6 +76,7 @@ model Order {
   id                   String   @id @default(uuid())
   action               Action
   order_price          Decimal  @db.Decimal(10, 2)
+  order_currency       String
   amount               Decimal  @db.Decimal(16, 8)
   order_execution_date DateTime
 
