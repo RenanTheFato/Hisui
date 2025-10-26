@@ -12,7 +12,7 @@ export class CreatePortfolioController {
     }
 
     const portfolioValidate = z.object({
-      name: z.string({ error: "The value has entered isn't am string." })
+      name: z.string({ error: "The value has entered isn't an string." })
         .min(2, { error: "The name doesn't meet the minimum number of characters (2)." }),
       description: z.string().nullable()
     })
