@@ -3,7 +3,6 @@ import { prisma } from "../../config/prisma.js";
 interface SearchStockParams {
   name?: string,
   ticker?: string,
-  type?: string,
   sector?: string,
   company_name?: string,
   country?: string,
@@ -36,13 +35,6 @@ export class SearchStockService {
           whereClause.ticker = {
             contains: value,
             mode: 'default'
-          }
-          break
-
-        case 'type':
-          whereClause.type = {
-            contains: value,
-            mode: 'insensitive'
           }
           break
 
@@ -79,7 +71,7 @@ export class SearchStockService {
       }
     })
 
-    const [assets, total] = await Promise.all([
+    const [stocks, total] = await Promise.all([
       prisma.stocks.findMany({
         where: whereClause,
         skip,
@@ -93,7 +85,7 @@ export class SearchStockService {
       })
     ])
 
-    if (assets.length === 0) {
+    if (stocks.length === 0) {
       throw new Error("No stock found with the provided filters")
     }
 
@@ -102,7 +94,7 @@ export class SearchStockService {
       limit,
       total,
       totalPages: Math.ceil(total / limit),
-      assets
+      stocks
     }
   }
 }
