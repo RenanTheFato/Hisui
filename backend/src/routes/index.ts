@@ -5,6 +5,7 @@ import { adminRoutes } from "./admin-routes.js";
 import { machineRoutes } from "./machine-routes.js";
 import { portfolioRoutes } from "./portfolio-routes.js";
 import { stocksRoutes } from "./stocks-routes.js";
+import { cryptoRoutes } from "./crypto-routes.js";
 
 export async function routes(fastify: FastifyTypedInstance) {
   fastify.get("/", async (req: FastifyRequest, rep: FastifyReply) => {
@@ -16,4 +17,5 @@ export async function routes(fastify: FastifyTypedInstance) {
   await machineRoutes(fastify)
   await portfolioRoutes(fastify)
   await stocksRoutes(fastify)
+  await cryptoRoutes(fastify)
 }
