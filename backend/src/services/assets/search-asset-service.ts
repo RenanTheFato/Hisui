@@ -41,14 +41,14 @@ export class SearchAssetService {
 
         case 'type':
           whereClause.type = {
-            equals: value,
+            contains: value,
             mode: 'insensitive'
           }
           break
 
         case 'sector':
           whereClause.sector = {
-            equals: value,
+            contains: value,
             mode: 'insensitive'
           }
           break
@@ -62,14 +62,14 @@ export class SearchAssetService {
 
         case 'country':
           whereClause.country = {
-            equals: value,
+            contains: value,
             mode: 'insensitive'
           }
           break
 
         case 'exchange':
           whereClause.exchange = {
-            equals: value,
+            contains: value,
             mode: 'insensitive'
           }
           break
