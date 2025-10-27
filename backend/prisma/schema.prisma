@@ -12,6 +12,16 @@ enum Role {
   ADMIN
 }
 
+enum AssetType {
+  STOCK
+  CRYPTO
+}
+
+enum Action {
+  BUY
+  SELL
+}
+
 model Users {
   id                         String    @id @default(uuid())
   email                      String    @unique
@@ -25,8 +35,8 @@ model Users {
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
-  Portfolio Portfolio[]
-  Order     Order[]
+  portfolios Portfolio[]
+  orders     Orders[]
 
   @@map("users")
 }
@@ -39,40 +49,52 @@ model Portfolio {
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
-  userId String
-  user   Users  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user_id String
+  user    Users   @relation(fields: [user_id], references: [id], onDelete: Cascade)
 
-  assets Assets[]
-  Order  Order[]
+  orders Orders[]
 
+  @@index([user_id])
   @@map("portfolio")
 }
 
-model Assets {
-  id          String @id @default(uuid())
-  name        String
-  ticker      String @unique
-  type        String
-  sector      String
+model Stocks {
+  id           String @id @default(uuid())
+  name         String
+  ticker       String @unique
+  sector       String
   company_name String
-  country     String
-  exchange      String
+  country      String
+  exchange     String
 
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
-  Portfolio Portfolio[]
-  Order     Order[]
+  orders Orders[] @relation("StockOrders")
 
-  @@map("assets")
+  @@index([ticker])
+  @@index([sector])
+  @@map("stocks")
 }
 
-enum Action {
-  BUY
-  SELL
+model Cryptos {
+  id         String  @id @default(uuid())
+  name       String
+  ticker     String  @unique
+  blockchain String
+  protocol   String?
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  orders Orders[] @relation("CryptoOrders")
+
+  @@index([ticker])
+  @@index([blockchain])
+  @@map("cryptos")
 }
 
-model Order {
+model Orders {
   id                   String   @id @default(uuid())
   action               Action
   order_price          Decimal  @db.Decimal(10, 2)
@@ -80,17 +102,27 @@ model Order {
   amount               Decimal  @db.Decimal(16, 8)
   order_execution_date DateTime
 
+  tax_amount           Decimal? @db.Decimal(10, 2)
+  fees                 Decimal? @db.Decimal(10, 2)
+
+  asset_type   AssetType
   asset_ticker String
-  asset        Assets @relation(fields: [asset_ticker], references: [ticker], onDelete: Cascade)
 
-  userId String
-  user   Users  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  stock  Stocks?  @relation("StockOrders", fields: [asset_ticker], references: [ticker], onDelete: Cascade, map: "stock_order")
+  crypto Cryptos? @relation("CryptoOrders", fields: [asset_ticker], references: [ticker], onDelete: Cascade, map: "crypto_order")
 
-  portfolioId String
-  portfolio   Portfolio @relation(fields: [portfolioId], references: [id], onDelete: Cascade)
+  user_id String
+  user    Users   @relation(fields: [user_id], references: [id], onDelete: Cascade)
+
+  portfolio_id String
+  portfolio    Portfolio @relation(fields: [portfolio_id], references: [id], onDelete: Cascade)
 
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
-  @@map("order")
+  @@index([user_id, action, order_execution_date])
+  @@index([portfolio_id, asset_ticker])
+  @@index([asset_type, asset_ticker, action])
+  @@index([order_execution_date])
+  @@map("orders")
 }

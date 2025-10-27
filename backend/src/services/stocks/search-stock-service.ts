@@ -1,6 +1,6 @@
 import { prisma } from "../../config/prisma.js";
 
-interface SearchAssetParams {
+interface SearchStockParams {
   name?: string,
   ticker?: string,
   type?: string,
@@ -12,8 +12,8 @@ interface SearchAssetParams {
   limit: number,
 }
 
-export class SearchAssetService {
-  async execute(params: SearchAssetParams) {
+export class SearchStockService {
+  async execute(params: SearchStockParams) {
     const { page, limit, ...filters } = params
 
     const whereClause: any = {}
@@ -80,7 +80,7 @@ export class SearchAssetService {
     })
 
     const [assets, total] = await Promise.all([
-      prisma.assets.findMany({
+      prisma.stocks.findMany({
         where: whereClause,
         skip,
         take: limit,
@@ -88,13 +88,13 @@ export class SearchAssetService {
           name: 'asc'
         }
       }),
-      prisma.assets.count({
+      prisma.stocks.count({
         where: whereClause
       })
     ])
 
     if (assets.length === 0) {
-      throw new Error("No assets found with the provided filters")
+      throw new Error("No stock found with the provided filters")
     }
 
     return {
