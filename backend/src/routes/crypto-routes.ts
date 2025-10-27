@@ -4,6 +4,7 @@ import { authentication } from "../middlewares/auth-middleware.js";
 import { checkAdmin } from "../middlewares/admin-middleware.js";
 import { CreateCryptoController } from "../controllers/crypto/admin/create-crypto-controller.js";
 import { SearchCryptoController } from "../controllers/crypto/search-crypto-controller.js";
+import { PatchCryptoController } from "../controllers/crypto/admin/patch-crypto-controller.js";
 
 export async function cryptoRoutes(fastify: FastifyTypedInstance) {
 
@@ -15,4 +16,7 @@ export async function cryptoRoutes(fastify: FastifyTypedInstance) {
     return new SearchCryptoController().handle(req, rep)
   })
 
+  fastify.patch("/crypto/patch/:id", { preHandler: [authentication, checkAdmin] }, async (req: FastifyRequest, rep: FastifyReply) => {
+    return new PatchCryptoController().handle(req, rep)
+  })
 }

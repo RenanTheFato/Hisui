@@ -1,10 +1,16 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod/v4";
-import { CreateCryptoService } from "../../../services/crypto/admin/create-crypto-service.js";
+import { Crypto } from "../../../models/crypto-model.js";
+import { PatchCryptoService } from "../../../services/crypto/admin/patch-crypto-service.js";
 
-export class CreateCryptoController {
+export class PatchCryptoController {
   async handle(req: FastifyRequest, rep: FastifyReply) {
     const userId = req.user.id as string
+    const { id } = req.params as Pick<Crypto, 'id'>
+
+    if (!id) {
+      return rep.status(400).send({ error: "The crypto id is missing" })
+    }
 
     if (!userId) {
       return rep.status(401).send({ error: "The user id is missing" })
@@ -13,21 +19,28 @@ export class CreateCryptoController {
     const cryptoValidate = z.object({
       name: z.string({ error: "The value has entered isn't an string." })
         .min(2, { error: "The crypto name doesn't meet the minimum number of characters (2)." })
-        .max(256, { error: "The crypto name exceeds the maximum number of characters (256)." }),
+        .max(256, { error: "The crypto name exceeds the maximum number of characters (256)." })
+        .nonempty({ message: "The crypto name cannot be empty" })
+        .optional(),
 
       ticker: z.string({ error: "The value has entered isn't an string." })
         .min(2, { error: "The crypto ticker doesn't meet the minimum number of characters (2)." })
         .max(24, { error: "The crypto ticker exceeds the maximum number of characters (24)." })
-        .uppercase({ error: "The crypto ticker must be only in uppercase" }),
+        .uppercase({ error: "The crypto ticker must be only in uppercase" })
+        .nonempty({ message: "The crypto ticker cannot be empty" })
+        .optional(),
 
       blockchain: z.string({ error: "The value has entered isn't an string." })
         .min(2, { error: "The crypto blockchain doesn't meet the minimum number of characters (2)." })
-        .max(256, { error: "The crypto blockchain exceeds the maximum number of characters (256)." }),
+        .max(256, { error: "The crypto blockchain exceeds the maximum number of characters (256)." })
+        .nonempty({ message: "The crypto blockchain cannot be empty" })
+        .optional(),
 
       protocol: z.string({ error: "The value has entered isn't an string." })
         .min(2, { error: "The protocol doesn't meet the minimum number of characters (2)." })
         .max(256, { error: "The protocol exceeds the maximum number of characters (256)." })
-        .optional(),
+        .nonempty({ message: "The protocol cannot be empty" })
+        .optional()
     })
 
     try {
@@ -47,13 +60,15 @@ export class CreateCryptoController {
     const { name, ticker, blockchain, protocol } = req.body as z.infer<typeof cryptoValidate>
 
     try {
-      const createCryptoService = new CreateCryptoService()
-      await createCryptoService.execute({ name, ticker, blockchain, protocol })
+      const patchCryptoService = new PatchCryptoService()
+      await patchCryptoService.execute({ id, name, ticker, blockchain, protocol })
 
-      return rep.status(201).send({ message: "Crypto created successfully" })
+      return rep.status(200).send({ message: "Crypto patched successfully" })
     } catch (error: any) {
       switch (error.message) {
-        case `The crypto ${ticker} has been already registered`:
+        case `The crypto doesn't exists`:
+          return rep.status(404).send({ error: error.message })
+        case `The new ticker: ${ticker} is already in use`:
           return rep.status(400).send({ error: error.message })
         default:
           return rep.status(500).send({ error: `Internal Server Error: ${error.message}` })
