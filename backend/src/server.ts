@@ -13,7 +13,6 @@ const server = fastify({ logger: true }).withTypeProvider<ZodTypeProvider>()
 const HOST = process.env.HTTP_HOST
 const PORT = process.env.HTTP_PORT
 
-
 async function start() {
   await server.register(cors)
   await server.register(rateLimit, {
