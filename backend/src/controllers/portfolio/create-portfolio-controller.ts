@@ -33,12 +33,11 @@ export class CreatePortfolioController {
 
     const { name, description } = req.body as z.infer<typeof portfolioValidate>
 
-
     try {
       const createPortfolioService = new CreatePortfolioService()
-      await createPortfolioService.execute({ userId, name, description })
+      const portfolio = await createPortfolioService.execute({ userId, name, description })
 
-      return rep.status(201).send({ message: "Portfolio created successfully" })
+      return rep.status(201).send({ message: "Portfolio created successfully", portfolio })
     } catch (error: any) {
       return rep.status(500).send({ error: `Internal Server Error: ${error.message}` })
     }
