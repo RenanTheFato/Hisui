@@ -40,10 +40,8 @@ export class CreateOrderController {
         .positive({ error: "The order amount must be positive" }),
 
       order_execution_date: z.string({ message: "Invalid date format" })
-        .refine((val) => {
-          return dayjs(val, ["YYYY/MM/DD HH:mm", "YYYY/MM/DD"], true).isValid()
-        }, { message: "The order execution date must be in format YYYY/MM/DD HH:mm or YYYY/MM/DD" })
-        .transform((val) => dayjs(val, ["YYYY/MM/DD HH:mm", "YYYY/MM/DD"], true).toDate()),
+        .refine((val) => dayjs(val, ["YYYY/MM/DD HH:mm", "YYYY/MM/DD"], true)
+        .isValid(),{ message: "The order execution date must be in format YYYY/MM/DD HH:mm or YYYY/MM/DD" }),
 
       tax_amount: z.number({ error: "The value has entered isn't an number" })
         .positive({ message: "Tax amount must be positive" })
@@ -71,12 +69,13 @@ export class CreateOrderController {
     }
 
     const { ticker, type, action, order_price, order_currency, amount, order_execution_date, fees, tax_amount } = req.body as z.infer<typeof orderValidate>
+    const orderExecutionDate = dayjs(order_execution_date, "YYYY/MM/DD HH:mm").toDate()
 
     try {
       const createOrderService = new CreateOrderService()
-      const order = await createOrderService.execute({ portfolioId, userId, ticker, type, action, order_price, order_currency, amount, order_execution_date, fees, tax_amount })
+      const order = await createOrderService.execute({ portfolioId, userId, ticker, type, action, order_price, order_currency, amount, order_execution_date: orderExecutionDate, fees, tax_amount })
 
-      return rep.status(201).send({ message: "Order created successfully", details: order })
+      return rep.status(201).send({ message: "Order created successfully", order })
     } catch (error: any) {
       switch (error.message) {
         case `The portfolio doesn't exists`:

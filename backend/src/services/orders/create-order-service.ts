@@ -59,39 +59,40 @@ export class CreateOrderService {
         throw new Error(`Invalid asset type: ${type}`)
     }
 
-    return await prisma.$transaction(async (tx) => {
+    const order = await prisma.$transaction(async (tx) => {
       if (action === "SELL") {
         const hasAsset = await tx.orders.findFirst({
           where: {
             portfolio_id: portfolio.id,
-            asset_ticker: ticker,
             asset_type: type,
-            action: "BUY"
+            action: "BUY",
+            ...(type === "STOCK") ? { stock_ticker: ticker } : { crypto_ticker: ticker }
           }
         })
 
         if (!hasAsset) {
           throw new Error(`You don't own ${ticker} in this portfolio to can be sell it`)
         }
-
-        const order = await tx.orders.create({
-          data: {
-            portfolio_id: portfolio.id,
-            user_id: userId,
-            asset_ticker: ticker,
-            asset_type: type,
-            action,
-            order_price,
-            order_currency,
-            amount,
-            order_execution_date,
-            fees,
-            tax_amount,
-          }
-        })
-
-        return order
       }
+
+      const newOrder = await tx.orders.create({
+        data: {
+          portfolio_id: portfolio.id,
+          user_id: userId,
+          asset_type: type,
+          action,
+          order_price,
+          order_currency,
+          amount,
+          order_execution_date,
+          fees,
+          tax_amount,
+          ...(type === "STOCK") ? { stock_ticker: ticker } : { crypto_ticker: ticker }
+        }
+      })
+      return newOrder
     })
+
+    return order
   }
 }

@@ -106,10 +106,12 @@ model Orders {
   fees                 Decimal? @db.Decimal(10, 2)
 
   asset_type   AssetType
-  asset_ticker String
 
-  stock  Stocks?  @relation("StockOrders", fields: [asset_ticker], references: [ticker], onDelete: Cascade, map: "stock_order")
-  crypto Cryptos? @relation("CryptoOrders", fields: [asset_ticker], references: [ticker], onDelete: Cascade, map: "crypto_order")
+  stock_ticker  String?
+  crypto_ticker String?
+
+  stock  Stocks?  @relation("StockOrders", fields: [stock_ticker], references: [ticker], onDelete: Cascade)
+  crypto Cryptos? @relation("CryptoOrders", fields: [crypto_ticker], references: [ticker], onDelete: Cascade)
 
   user_id String
   user    Users   @relation(fields: [user_id], references: [id], onDelete: Cascade)
@@ -121,8 +123,8 @@ model Orders {
   updated_at DateTime @updatedAt
 
   @@index([user_id, action, order_execution_date])
-  @@index([portfolio_id, asset_ticker])
-  @@index([asset_type, asset_ticker, action])
-  @@index([order_execution_date])
+  @@index([portfolio_id])
+  @@index([stock_ticker])
+  @@index([crypto_ticker])
   @@map("orders")
 }
