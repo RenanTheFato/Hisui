@@ -7,6 +7,10 @@ export class ListPortfolioController {
     const userId = req.user.id as string
     const { name } = req.query as { name?: string }
 
+    if (!userId) {
+      return rep.status(401).send({ error: "The user id is missing" })
+    }
+
     try {
       const listPortfolioService = new ListPortfolioService()
       const portfolios = await listPortfolioService.execute({ name, userId })
