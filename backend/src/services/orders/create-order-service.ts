@@ -1,5 +1,6 @@
 import { Action, AssetType } from "@prisma/client";
 import { prisma } from "../../config/prisma.js";
+import { sendOrderConfirmationEmail } from "../../packages/order-mail-package.js";
 
 interface CreateOrder {
   portfolioId: string,
@@ -92,6 +93,35 @@ export class CreateOrderService {
       })
       return newOrder
     })
+    
+    const user = await prisma.users.findUnique({
+      where: { 
+        id: userId 
+      },
+      select: {
+        email: true,
+        username: true
+      }
+    })
+
+    if (user && user.email) {
+      sendOrderConfirmationEmail({
+        email: user.email,
+        username: user.username,
+        ticker,
+        type,
+        action,
+        order_price,
+        order_currency,
+        amount,
+        order_execution_date,
+        fees,
+        tax_amount,
+        orderId: order.id
+      }).catch(error => {
+        console.error('Failed to send order confirmation email:', error)
+      })
+    }
 
     return order
   }
