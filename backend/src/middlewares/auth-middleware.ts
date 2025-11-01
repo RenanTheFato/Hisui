@@ -23,6 +23,7 @@ export async function authentication(req: FastifyRequest, rep: FastifyReply) {
     const user = await prisma.users.findUnique({
       where: {
         id,
+        is_verified: true
       },
       omit: {
         password_hash: true,

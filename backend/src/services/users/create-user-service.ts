@@ -18,7 +18,6 @@ export class CreateUserService{
     const verificationToken = generateVerificationToken()
     const tokenExpires = getTokenExpiration()
 
-
     await prisma.users.create({
       data: {
         email,
