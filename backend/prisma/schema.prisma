@@ -128,3 +128,25 @@ model Orders {
   @@index([crypto_ticker])
   @@map("orders")
 }
+
+model News {
+  id            String   @id
+  publisher_name String
+  publisher_url  String
+  title          String
+  author         String
+  published_at   DateTime
+  article_url    String
+  tickers        String[]
+  amp_url        String?
+  image_url      String
+  description    String
+  insights       Json
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@index([published_at])
+  @@index([publisher_name])
+  @@map("news")
+}
