@@ -33,23 +33,23 @@ export class CreateOrderController {
 
       order_currency: z.string({ error: "The value has entered isn't an string" })
         .min(1, { error: "The order currency doesn't meet the minimum number of characters (1)." })
-        .nonempty({ message: "The order_currency name cannot be empty" })
+        .nonempty({ error: "The order_currency name cannot be empty" })
         .toUpperCase(),
 
       amount: z.number({ error: "The amount has entered isn't an number" })
         .positive({ error: "The order amount must be positive" }),
 
-      order_execution_date: z.string({ message: "Invalid date format" })
+      order_execution_date: z.string({ error: "Invalid date format" })
         .refine((val) => dayjs(val, ["YYYY/MM/DD HH:mm", "YYYY/MM/DD"], true)
-        .isValid(),{ message: "The order execution date must be in format YYYY/MM/DD HH:mm or YYYY/MM/DD" }),
+        .isValid(),{ error: "The order execution date must be in format YYYY/MM/DD HH:mm or YYYY/MM/DD" }),
 
       tax_amount: z.number({ error: "The value has entered isn't an number" })
-        .positive({ message: "Tax amount must be positive" })
+        .positive({ error: "Tax amount must be positive" })
         .optional()
         .nullable(),
 
       fees: z.number({ error: "The value has entered isn't an number" })
-        .positive({ message: "Fees must be positive" })
+        .positive({ error: "Fees must be positive" })
         .optional()
         .nullable(),
     })

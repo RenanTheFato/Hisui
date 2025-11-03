@@ -20,26 +20,26 @@ export class PatchCryptoController {
       name: z.string({ error: "The value has entered isn't an string." })
         .min(2, { error: "The crypto name doesn't meet the minimum number of characters (2)." })
         .max(256, { error: "The crypto name exceeds the maximum number of characters (256)." })
-        .nonempty({ message: "The crypto name cannot be empty" })
+        .nonempty({ error: "The crypto name cannot be empty" })
         .optional(),
 
       ticker: z.string({ error: "The value has entered isn't an string." })
         .min(2, { error: "The crypto ticker doesn't meet the minimum number of characters (2)." })
         .max(24, { error: "The crypto ticker exceeds the maximum number of characters (24)." })
         .uppercase({ error: "The crypto ticker must be only in uppercase" })
-        .nonempty({ message: "The crypto ticker cannot be empty" })
+        .nonempty({ error: "The crypto ticker cannot be empty" })
         .optional(),
 
       blockchain: z.string({ error: "The value has entered isn't an string." })
         .min(2, { error: "The crypto blockchain doesn't meet the minimum number of characters (2)." })
         .max(256, { error: "The crypto blockchain exceeds the maximum number of characters (256)." })
-        .nonempty({ message: "The crypto blockchain cannot be empty" })
+        .nonempty({ error: "The crypto blockchain cannot be empty" })
         .optional(),
 
       protocol: z.string({ error: "The value has entered isn't an string." })
         .min(2, { error: "The protocol doesn't meet the minimum number of characters (2)." })
         .max(256, { error: "The protocol exceeds the maximum number of characters (256)." })
-        .nonempty({ message: "The protocol cannot be empty" })
+        .nonempty({ error: "The protocol cannot be empty" })
         .optional()
     })
 

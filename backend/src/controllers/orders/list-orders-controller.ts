@@ -15,7 +15,7 @@ export class ListOrdersController {
     const actionOptions = Object.values(Action)
 
     const listOrdersValidate = z.object({
-      ticker: z.string({ message: "The value entered isn't a string." }).optional(),
+      ticker: z.string({ error: "The value entered isn't a string." }).optional(),
 
       type: z.enum(assetTypes as [AssetType, ...AssetType[]], { error: `The type must be one of the followings ${assetTypes.join(", ")}` })
         .optional(),
@@ -23,21 +23,21 @@ export class ListOrdersController {
       action: z.enum(actionOptions as [Action, ...Action[]], { error: `The type must be one of the followings ${actionOptions.join(", ")}` })
         .optional(),
 
-      order_price: z.number({ message: "The value entered isn't a number." }).optional(),
+      order_price: z.number({ error: "The value entered isn't a number." }).optional(),
 
-      order_currency: z.string({ message: "The value entered isn't a string." }).optional(),
+      order_currency: z.string({ error: "The value entered isn't a string." }).optional(),
 
-      amount: z.number({ message: "The value entered isn't a number." }).optional(),
+      amount: z.number({ error: "The value entered isn't a number." }).optional(),
 
-      portfolio_id: z.string({ message: "The value entered isn't a string." }).optional(),
+      portfolio_id: z.string({ error: "The value entered isn't a string." }).optional(),
 
-      page: z.coerce.number({ message: "The page must be a number." })
-        .min(1, { message: "The page must be at least 1." })
+      page: z.coerce.number({ error: "The page must be a number." })
+        .min(1, { error: "The page must be at least 1." })
         .default(1),
 
-      limit: z.coerce.number({ message: "The limit must be a number." })
-        .min(1, { message: "The limit must be at least 1." })
-        .max(100, { message: "The limit cannot exceed 100." })
+      limit: z.coerce.number({ error: "The limit must be a number." })
+        .min(1, { error: "The limit must be at least 1." })
+        .max(100, { error: "The limit cannot exceed 100." })
         .default(20),
     })
 

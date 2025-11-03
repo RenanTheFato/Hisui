@@ -13,23 +13,23 @@ export class SearchCryptoController {
     }
 
     const searchCryptoValidate = z.object({
-      name: z.string({ message: "The value entered isn't a string." }).optional(),
+      name: z.string({ error: "The value entered isn't a string." }).optional(),
 
-      ticker: z.string({ message: "The value entered isn't a string." }).optional(),
+      ticker: z.string({ error: "The value entered isn't a string." }).optional(),
 
-      type: z.string({ message: "The value entered isn't a string." }).optional(),
+      type: z.string({ error: "The value entered isn't a string." }).optional(),
 
-      blockchain: z.string({ message: "The value entered isn't a string." }).optional(),
+      blockchain: z.string({ error: "The value entered isn't a string." }).optional(),
 
-      protocol: z.string({ message: "The value entered isn't a string." }).optional(),
+      protocol: z.string({ error: "The value entered isn't a string." }).optional(),
 
-      page: z.coerce.number({ message: "The page must be a number." })
-        .min(1, { message: "The page must be at least 1." })
+      page: z.coerce.number({ error: "The page must be a number." })
+        .min(1, { error: "The page must be at least 1." })
         .default(1),
 
-      limit: z.coerce.number({ message: "The limit must be a number." })
-        .min(1, { message: "The limit must be at least 1." })
-        .max(100, { message: "The limit cannot exceed 100." })
+      limit: z.coerce.number({ error: "The limit must be a number." })
+        .min(1, { error: "The limit must be at least 1." })
+        .max(100, { error: "The limit cannot exceed 100." })
         .default(20),
     })
 

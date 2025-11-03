@@ -20,38 +20,38 @@ export class PatchStockController {
       name: z.string({ error: "The value has entered isn't an string." })
         .min(2, { error: "The stock name doesn't meet the minimum number of characters (2)." })
         .max(256, { error: "The stock name exceeds the maximum number of characters (256)." })
-        .nonempty({ message: "The stock name cannot be empty" })
+        .nonempty({ error: "The stock name cannot be empty" })
         .optional(),
 
       ticker: z.string({ error: "The value has entered isn't an string." })
         .min(2, { error: "The stock ticker doesn't meet the minimum number of characters (2)." })
         .max(24, { error: "The stock ticker exceeds the maximum number of characters (24)." })
         .uppercase({ error: "The stock ticker must be only in uppercase" })
-        .nonempty({ message: "The stock ticker cannot be empty" })
+        .nonempty({ error: "The stock ticker cannot be empty" })
         .optional(),
 
       sector: z.string({ error: "The value has entered isn't an string." })
         .min(2, { error: "The stock sector doesn't meet the minimum number of characters (2)." })
         .max(256, { error: "The stock sector exceeds the maximum number of characters (256)." })
-        .nonempty({ message: "The stock sector cannot be empty" })
+        .nonempty({ error: "The stock sector cannot be empty" })
         .optional(),
 
       company_name: z.string({ error: "The value has entered isn't an string." })
         .min(2, { error: "The company name doesn't meet the minimum number of characters (2)." })
         .max(256, { error: "The company name exceeds the maximum number of characters (256)." })
-        .nonempty({ message: "The company name cannot be empty" })
+        .nonempty({ error: "The company name cannot be empty" })
         .optional(),
 
       country: z.string({ error: "The value has entered isn't an string." })
         .min(2, { error: "The country acronym doesn't meet the minimum number of characters (2)." })
         .max(6, { error: "The country acronym exceeds the maximum number of characters (6)." })
-        .nonempty({ message: "The country cannot be empty" })
+        .nonempty({ error: "The country cannot be empty" })
         .optional(),
 
       exchange: z.string({ error: "The value has entered isn't an string." })
         .min(2, { error: "The exchange name doesn't meet the minimum number of characters (2)." })
         .max(256, { error: "The exchange name exceeds the maximum number of characters (256)." })
-        .nonempty({ message: "The exchange cannot be empty" })
+        .nonempty({ error: "The exchange cannot be empty" })
         .optional(),
     })
 
