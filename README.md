@@ -53,14 +53,40 @@ Você pode acessar o conteúdo em vídeo acessando o
 ---
 
 ## 🛠️ Tecnologias Utilizadas no Backend
-- **Linguagem:** Node.js (TypeScript)  
-- **Framework:** Fastify  
-- **Banco de Dados:** PostgreSQL  
-- **ORM:** Prisma  
-- **Validações:** Zod  
-- **Autenticação:** JWT  
+- **Linguagem:** Node.js (TypeScript)
+  <div style="text-align: justify;">
+  Node.js é um ambiente de execução JavaScript que permite construir aplicações de backend escaláveis e de alta performance. A adição de TypeScript, um superconjunto de JavaScript, introduz tipagem estática ao código, o que auxilia na prevenção de erros em tempo de desenvolvimento e melhora a manutenibilidade do projeto. A escolha por Node.js com TypeScript é estratégica para garantir um backend robusto e eficiente, facilitando a colaboração em equipes e a manutenção de uma base de código complexa, ao mesmo tempo em que oferece agilidade no desenvolvimento.
+  </div>
+    
+- **Framework:** Fastify
+   <div style="text-align: justify;">
+   Fastify é um framework web minimalista e de alto desempenho para Node.js, projetado para oferecer uma solução rápida e com baixa sobrecarga na construção de APIs e serviços web. Sua arquitetura prioriza a velocidade e a eficiência na resposta, sendo otimizado para lidar com altas cargas de tráfego. Este framework foi selecionado devido à sua performance superior, extensibilidade através de plugins e à sua capacidade de entregar aplicações com requisitos de baixa latência e alta throughput.
+   </div>
+     
+- **Banco de Dados:** PostgreSQL
+   <div style="text-align: justify;">
+   PostgreSQL é um sistema de gerenciamento de banco de dados relacional e de código aberto, amplamente reconhecido por sua confiabilidade, robustez e conformidade com padrões SQL. Ele suporta uma vasta gama de recursos avançados e é capaz de gerenciar grandes volumes de dados e múltiplas conexões simultâneas de forma estável. A decisão de utilizar PostgreSQL baseia-se em sua segurança comprovada, flexibilidade, escalabilidade e na capacidade de garantir a integridade dos dados em cenários de alta demanda.
+   </div>
+     
+- **ORM:** Prisma
+   <div style="text-align: justify;">
+   Prisma atua como um ORM (Object-Relational Mapper) moderno, simplificando a interação com o banco de dados em aplicações Node.js e TypeScript. Ele permite definir o esquema do banco de dados de forma declarativa e gera um cliente de consulta type-safe, o que reduz a necessidade de escrever SQL diretamente e minimiza erros. O Prisma foi escolhido por sua excelente integração com TypeScript, que oferece segurança de tipo, aumenta a produtividade dos desenvolvedores e simplifica a gestão de migrações e o acesso aos dados.
+   </div>
+   
+- **Validações:** Zod
+   <div style="text-align: justify;">
+   Zod é uma biblioteca de validação e transformação de dados TypeScript-first, utilizada para definir e validar a estrutura e os tipos dos dados de entrada no backend. Ela permite criar schemas declarativos para garantir que os dados recebidos estejam em conformidade com as expectativas do sistema, prevenindo assim erros de aplicação e potenciais vulnerabilidades. A escolha por Zod se justifica pela sua performance, sintaxe intuitiva e pela capacidade de gerar tipagens automaticamente, promovendo maior segurança e clareza na manipulação dos dados.
+   </div>
+     
+- **Autenticação:** JWT
+   <div style="text-align: justify;">
+   JWT (JSON Web Token) é um padrão para a criação de tokens de acesso que são compactos, seguros e auto-contidos, frequentemente empregados em sistemas de autenticação e autorização. Ele permite a transmissão segura de informações sobre o usuário entre as partes, assinado digitalmente para verificar sua integridade e autenticidade. Proporciona escalabilidade ao sistema de autenticação, e pela sua eficiência em ambientes distribuídos, como APIs e microsserviços.
+   </div>
+  
 - **Integrações com IA/Data Science:** Python (Flask, Pandas, Scikit-learn, Poetry)
-
+   <div style="text-align: justify;">
+   Para as capacidades de Inteligência Artificial e Data Science, Python é a linguagem escolhida, complementada por ferramentas como Flask para a exposição de modelos via API, Pandas para a manipulação e análise de dados, e Scikit-learn para a implementação de algoritmos de machine learning. Poetry é utilizado para gerenciar as dependências do projeto de forma organizada. Esta seleção é fundamentada na vasta coleção de bibliotecas e na robustez do ecossistema Python para tarefas de IA e análise de dados, permitindo a integração de funcionalidades inteligentes de forma eficaz e com alto desempenho.
+   </div>
 ---
 
 ## ⚙️ Instruções de Setup
