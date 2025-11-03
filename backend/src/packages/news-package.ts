@@ -29,7 +29,7 @@ interface NewsResponse {
 }
 
 export class NewsPackage {
-  async fetchNews(rep: FastifyReply) {
+  async fetchNews() {
     try {
       const API_KEY = process.env.MASSIVE_API_KEY
       const defaultTimestamp = new Date().toISOString().split("T")[0]
@@ -92,11 +92,8 @@ export class NewsPackage {
 
         await new Promise(resolve => setTimeout(resolve, 200))
       }
-
-      return rep.status(200).send({ news: allNews })
-
     } catch (error: any) {
-      return rep.status(500).send({ error: error.message })
+      console.log(error)
     }
   }
 }

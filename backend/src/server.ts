@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 import cors from "@fastify/cors";
 import rateLimit from "@fastify/rate-limit";
 import { routes } from "./routes/index.js";
+import { newsJob } from "./jobs/news/news-cron-job.js";
 
 dotenv.config()
 
@@ -22,6 +23,7 @@ async function start() {
   
   server.setValidatorCompiler(validatorCompiler)
   server.setSerializerCompiler(serializerCompiler)
+  newsJob
   
   await server.register(fastifySwagger, {
     openapi: {
@@ -50,6 +52,7 @@ async function start() {
   })
   
   await server.register(routes)
+
   
   await server.listen({
     host: HOST || "0.0.0.0",
