@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach } from "vitest"; // ✅ Import beforeEach do vitest
+import { describe, it, expect, vi, beforeEach } from "vitest";
 import { CreateCryptoService } from "../../services/crypto/admin/create-crypto-service.js";
 import { prisma } from "../../config/prisma.js";
 
