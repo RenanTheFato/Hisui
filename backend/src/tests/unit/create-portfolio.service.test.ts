@@ -17,7 +17,7 @@ describe("CreatePortfolioService", () => {
   const mockPortfolioDescription = "A test portfolio"
 
   const mockPortfolio = {
-    id: "1", // must be a string
+    id: "1",
     user_id: mockUserId,
     name: mockPortfolioName,
     description: mockPortfolioDescription,
