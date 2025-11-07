@@ -26,6 +26,9 @@ export class CreateUserService{
         verification_token: verificationToken,
         verification_token_expires: tokenExpires,
         is_verified: false
+      },
+      include: {
+        userPreferences: true
       }
     })
 
