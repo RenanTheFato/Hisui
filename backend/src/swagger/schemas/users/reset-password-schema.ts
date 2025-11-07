@@ -6,18 +6,18 @@ export const resetPasswordSchema = {
   description: "Allows an authenticated user to change their account password by providing the old password and a new valid password.",
   security: [{ bearerAuth: [] }],
   body: z.object({
-    old_password: z.string({ message: "The provided value must be a string." })
+    old_password: z.string({ error: "The provided value must be a string." })
       .describe("The current password of the user.")
       .meta({
         example: "oldPassword123!"
       }),
 
-    new_password: z.string({ message: "The provided value must be a string." })
-      .min(8, { message: "The password doesn't meet the minimum number of characters (8)." })
-      .max(128, { message: "The password has exceeded the character limit (128)." })
-      .refine((password) => /[A-Z]/.test(password), { message: "Password must contain at least one uppercase letter." })
-      .refine((password) => /[0-9]/.test(password), { message: "Password must contain at least one number." })
-      .refine((password) => /[@#$*&]/.test(password), { message: "Password must contain at least one of these special characters ('@' '#' '$' '*' '&')." })
+    new_password: z.string({ error: "The provided value must be a string." })
+      .min(8, { error: "The password doesn't meet the minimum number of characters (8)." })
+      .max(128, { error: "The password has exceeded the character limit (128)." })
+      .refine((password) => /[A-Z]/.test(password), { error: "Password must contain at least one uppercase letter." })
+      .refine((password) => /[0-9]/.test(password), { error: "Password must contain at least one number." })
+      .refine((password) => /[@#$*&]/.test(password), { error: "Password must contain at least one of these special characters ('@' '#' '$' '*' '&')." })
       .describe("The new password. Must follow security rules (uppercase, number, special character).")
       .meta({
         example: "NewPassword456*"

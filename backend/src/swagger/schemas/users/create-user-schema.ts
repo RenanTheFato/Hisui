@@ -20,27 +20,27 @@ export const createUserSchema = {
   summary: "Create a new user account",
   description: "Registers a new user by validating the provided credentials, hashing the password, and storing the user in the system.",
   body: z.object({
-    email: z.email({ message: "The value has entered isn't a email or the email is invalid." })
-      .min(2, { message: "The email must have at least 2 characters." })
+    email: z.email({ error: "The value has entered isn't a email or the email is invalid." })
+      .min(2, { error: "The email must have at least 2 characters." })
       .describe("User email address (must be unique in the system).")
       .meta({
         example: "johndoe@email.com"
       }),
     
     password: z.string()
-      .min(8, { message: "Password must contain at least 8 characters." })
-      .max(128, { message: "Password cannot exceed 128 characters." })
-      .refine((password) => /[A-Z]/.test(password), { message: "Password must contain at least one uppercase letter." })
-      .refine((password) => /[0-9]/.test(password), { message: "Password must contain at least one number." })
-      .refine((password) => /[@#$*&]/.test(password), { message: "Password must contain at least one special character ('@', '#', '$', '*', '&')." })
+      .min(8, { error: "Password must contain at least 8 characters." })
+      .max(128, { error: "Password cannot exceed 128 characters." })
+      .refine((password) => /[A-Z]/.test(password), { error: "Password must contain at least one uppercase letter." })
+      .refine((password) => /[0-9]/.test(password), { error: "Password must contain at least one number." })
+      .refine((password) => /[@#$*&]/.test(password), { error: "Password must contain at least one special character ('@', '#', '$', '*', '&')." })
       .describe("User password with security constraints.")
       .meta({
         example: "your_very_strong_password"
       }),
     
     username: z.string()
-      .min(2, { message: "The username must have at least 2 characters." })
-      .max(128, { message: "The username cannot exceed 128 characters." })
+      .min(2, { error: "The username must have at least 2 characters." })
+      .max(128, { error: "The username cannot exceed 128 characters." })
       .describe("The display name of the user.")
       .meta({
         example: "John Doe"

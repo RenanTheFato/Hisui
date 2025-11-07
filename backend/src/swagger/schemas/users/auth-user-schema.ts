@@ -5,13 +5,13 @@ export const authUserSchema = {
   summary: "Authenticate a user account",
   description: "Validates user credentials and returns an access token upon successful authentication.",
   body: z.object({
-    email: z.email({ message: "The provided value must be a string or invalid email format." })
+    email: z.email({ error: "The provided value must be a string or invalid email format." })
       .describe("User's email address. Must be unique in the system.")
       .meta({
         example: "johndoe@email.com"
       }),
 
-    password: z.string({ message: "The provided value must be a string." })
+    password: z.string({ error: "The provided value must be a string." })
       .describe("User's account password.")
       .meta({
         example: "your_very_strong_password"
