@@ -27,6 +27,16 @@ const internalErrorSchema = z.object({
   error: z.string(),
 }).describe("Unexpected internal server error.")
 
+const decimalToNumber = z.any()
+  .transform(val => {
+    if (val === null || val === undefined) return val;
+    if (typeof val === 'number') return val;
+    if (val && typeof val === 'object' && 'toNumber' in val) {
+      return val.toNumber();
+    }
+    return Number(val)
+  })
+
 export const createOrderSchema = {
   tags: ["orders", "portfolio"],
   summary: "Create a new order (buy or sell) in a portfolio",
@@ -105,12 +115,12 @@ export const createOrderSchema = {
         user_id: z.string().describe("ID of the user who created the order."),
         asset_type: z.string().describe("Type of asset (STOCK or CRYPTO)."),
         action: z.string().describe("Type of action (BUY or SELL)."),
-        order_price: z.number().describe("Price per unit of the asset."),
+        order_price: decimalToNumber.pipe(z.number()).describe("Price per unit of the asset."),
         order_currency: z.string().describe("Currency used for the order price."),
-        amount: z.number().describe("Quantity of the asset being ordered."),
+        amount: decimalToNumber.pipe(z.number()).describe("Quantity of the asset being ordered."),
         order_execution_date: z.date().describe("Execution date of the order."),
-        fees: z.number().nullable().describe("Transaction fees applied to the order."),
-        tax_amount: z.number().nullable().describe("Tax amount applied to the order."),
+        fees: decimalToNumber.pipe(z.number()).nullable().describe("Transaction fees applied to the order."),
+        tax_amount: decimalToNumber.pipe(z.number()).nullable().describe("Tax amount applied to the order."),
         created_at: z.date().describe("Date and time when the order was created."),
         updated_at: z.date().describe("Date and time when the order was last updated."),
       }),

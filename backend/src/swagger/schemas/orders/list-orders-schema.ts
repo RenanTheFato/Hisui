@@ -20,6 +20,47 @@ const internalErrorSchema = z.object({
   error: z.string(),
 }).describe("Unexpected internal server error.")
 
+const decimalToNumber = z.any()
+  .transform(val => {
+    if (val === null || val === undefined) return val;
+    if (typeof val === 'number') return val;
+    if (val && typeof val === 'object' && 'toNumber' in val) {
+      return val.toNumber();
+    }
+    return Number(val);
+  })
+
+const baseOrderSchema = z.object({
+  id: z.string().describe("Unique identifier of the order."),
+
+  user_id: z.string().describe("ID of the user who created the order."),
+
+  asset_type: z.enum(["STOCK", "CRYPTO"]).describe("Type of asset (STOCK or CRYPTO)."),
+
+  action: z.enum(Action).describe("Type of action (BUY or SELL)."),
+
+  order_price: decimalToNumber.pipe(z.number()).describe("Price per unit of the asset."),
+
+  order_currency: z.string().describe("Currency used for the order price."),
+
+  amount: decimalToNumber.pipe(z.number()).describe("Quantity of the asset being ordered."),
+
+  order_execution_date: z.date().describe("Execution date of the order."),
+
+  fees: decimalToNumber.pipe(z.number()).nullable().describe("Transaction fees applied to the order."),
+
+  tax_amount: decimalToNumber.pipe(z.number()).nullable().describe("Tax amount applied to the order."),
+
+  stock_ticker: z.string().nullable().describe("Stock ticker symbol (if asset type is STOCK)."),
+
+  crypto_ticker: z.string().nullable().describe("Crypto ticker symbol (if asset type is CRYPTO)."),
+
+  portfolio_name: z.string().nullable().describe("Name of the portfolio where the order belongs."),
+
+  created_at: z.date().describe("Date and time when the order was created."),
+
+  updated_at: z.date().describe("Date and time when the order was last updated."),
+})
 
 export const listOrdersSchema = {
   tags: ["orders"],
@@ -83,24 +124,12 @@ export const listOrdersSchema = {
       total: z.number().describe("Total number of orders matching the filters."),
       totalPages: z.number().describe("Total number of available pages."),
       orders: z.object({
-        crypto: z.array(z.object({
-          id: z.string(),
+        crypto: z.array(baseOrderSchema.extend({
           asset_type: z.literal("CRYPTO"),
-          action: z.enum(Action),
-          order_price: z.number(),
-          order_currency: z.string(),
-          amount: z.number(),
-          portfolio_name: z.string().nullable(),
         })).optional()
           .describe("List of cryptocurrency orders."),
-        stock: z.array(z.object({
-          id: z.string(),
+        stock: z.array(baseOrderSchema.extend({
           asset_type: z.literal("STOCK"),
-          action: z.enum(Action),
-          order_price: z.number(),
-          order_currency: z.string(),
-          amount: z.number(),
-          portfolio_name: z.string().nullable(),
         })).optional()
           .describe("List of stock orders."),
       }).describe("Grouped list of user orders by asset type."),
