@@ -35,10 +35,21 @@ model Users {
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
-  portfolios Portfolio[]
-  orders     Orders[]
+  portfolios      Portfolio[]
+  orders          Orders[]
+  userPreferences UserPreferences?
 
   @@map("users")
+}
+
+model UserPreferences {
+  user_id                     String  @id
+  allow_news_notifications    Boolean @default(true)
+  allow_orders_notifications  Boolean @default(true)
+  allow_updates_notifications Boolean @default(true)
+
+  user Users @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  @@map("user_preferences")
 }
 
 model Portfolio {
@@ -50,7 +61,7 @@ model Portfolio {
   updated_at DateTime @updatedAt
 
   user_id String
-  user    Users   @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  user    Users  @relation(fields: [user_id], references: [id], onDelete: Cascade)
 
   orders Orders[]
 
@@ -102,10 +113,10 @@ model Orders {
   amount               Decimal  @db.Decimal(16, 8)
   order_execution_date DateTime
 
-  tax_amount           Decimal? @db.Decimal(10, 2)
-  fees                 Decimal? @db.Decimal(10, 2)
+  tax_amount Decimal? @db.Decimal(10, 2)
+  fees       Decimal? @db.Decimal(10, 2)
 
-  asset_type   AssetType
+  asset_type AssetType
 
   stock_ticker  String?
   crypto_ticker String?
@@ -114,7 +125,7 @@ model Orders {
   crypto Cryptos? @relation("CryptoOrders", fields: [crypto_ticker], references: [ticker], onDelete: Cascade)
 
   user_id String
-  user    Users   @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  user    Users  @relation(fields: [user_id], references: [id], onDelete: Cascade)
 
   portfolio_id String
   portfolio    Portfolio @relation(fields: [portfolio_id], references: [id], onDelete: Cascade)
@@ -130,7 +141,7 @@ model Orders {
 }
 
 model News {
-  id            String   @id
+  id             String   @id
   publisher_name String
   publisher_url  String
   title          String
