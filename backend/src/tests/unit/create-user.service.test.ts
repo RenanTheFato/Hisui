@@ -54,7 +54,7 @@ describe("CreateUserService", () => {
     vi.clearAllMocks()
   })
 
-  it("should create a new user and send verification email successfully", async () => {
+  it("should create a new user with preferences and send verification email successfully", async () => {
     vi.mocked(prisma.users.findFirst).mockResolvedValue(null)
     vi.mocked(prisma.users.create).mockResolvedValue(mockCreatedUser)
 
@@ -71,6 +71,9 @@ describe("CreateUserService", () => {
         verification_token: mockToken,
         verification_token_expires: mockTokenExpires,
         is_verified: false,
+        userPreferences: {
+          create: {}
+        }
       },
     })
     expect(sendVerificationEmail).toHaveBeenCalledWith(

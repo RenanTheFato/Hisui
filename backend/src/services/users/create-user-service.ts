@@ -25,11 +25,11 @@ export class CreateUserService{
         username,
         verification_token: verificationToken,
         verification_token_expires: tokenExpires,
-        is_verified: false
+        is_verified: false,
+        userPreferences: {
+          create: {}
+        }
       },
-      include: {
-        userPreferences: true
-      }
     })
 
     await sendVerificationEmail(email, username, verificationToken)
