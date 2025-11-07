@@ -5,27 +5,27 @@ const validationErrorSchema = z.object({
   code: z.string(),
   error: z.string(),
   message: z.string(),
-}).describe("Input validation failed due to incorrect or missing data.");
+}).describe("Input validation failed due to incorrect or missing data.")
 
 const notFoundErrorSchema = z.object({
   error: z.string(),
-}).describe("The specified cryptocurrency was not found.");
+}).describe("The specified cryptocurrency was not found.")
 
 const serviceErrorSchema = z.object({
   error: z.string(),
-}).describe("A business logic error occurred during crypto update.");
+}).describe("A business logic error occurred during crypto update.")
 
 const unauthorizedErrorSchema = z.object({
   error: z.string(),
-}).describe("Unauthorized. Missing or invalid user ID.");
+}).describe("Unauthorized. Missing or invalid user ID.")
 
 const forbiddenErrorSchema = z.object({
   error: z.string(),
-}).describe("Forbidden. User does not have ADMIN privileges.");
+}).describe("Forbidden. User does not have ADMIN privileges.")
 
 const internalErrorSchema = z.object({
   error: z.string(),
-}).describe("Unexpected internal server error.");
+}).describe("Unexpected internal server error.")
 
 export const patchCryptoSchema = {
   tags: ["crypto", "admin"],
@@ -83,19 +83,14 @@ export const patchCryptoSchema = {
       message: z.string().describe("Success message."),
     }).describe("Cryptocurrency updated successfully."),
 
-    400: z.union([validationErrorSchema, serviceErrorSchema])
-      .describe("Bad Request — Validation failure or business rule violation."),
+    400: z.union([validationErrorSchema, serviceErrorSchema]).describe("Bad Request — Validation failure or business rule violation."),
 
-    401: unauthorizedErrorSchema
-      .describe("Unauthorized — Missing or invalid user ID."),
+    401: unauthorizedErrorSchema.describe("Unauthorized — Missing or invalid user ID."),
 
-    403: forbiddenErrorSchema
-      .describe("Forbidden — User does not have ADMIN privileges."),
+    403: forbiddenErrorSchema.describe("Forbidden — User does not have ADMIN privileges."),
 
-    404: notFoundErrorSchema
-      .describe("Not Found — The specified cryptocurrency does not exist."),
+    404: notFoundErrorSchema.describe("Not Found — The specified cryptocurrency does not exist."),
 
-    500: internalErrorSchema
-      .describe("Internal Server Error — Unexpected failure during crypto update."),
+    500: internalErrorSchema.describe("Internal Server Error — Unexpected failure during crypto update."),
   },
 }

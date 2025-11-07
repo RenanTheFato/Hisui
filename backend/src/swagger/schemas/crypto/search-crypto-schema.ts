@@ -5,19 +5,19 @@ const validationErrorSchema = z.object({
   code: z.string(),
   error: z.string(),
   message: z.string(),
-}).describe("Input validation failed due to incorrect or missing query parameters.");
+}).describe("Input validation failed due to incorrect or missing query parameters.")
 
 const unauthorizedErrorSchema = z.object({
   error: z.string(),
-}).describe("Unauthorized. Missing or invalid user ID.");
+}).describe("Unauthorized. Missing or invalid user ID.")
 
 const notFoundErrorSchema = z.object({
   error: z.string(),
-}).describe("No cryptocurrencies were found with the provided filters.");
+}).describe("No cryptocurrencies were found with the provided filters.")
 
 const internalErrorSchema = z.object({
   error: z.string(),
-}).describe("Unexpected internal server error.");
+}).describe("Unexpected internal server error.")
 
 export const searchCryptoSchema = {
   tags: ["crypto", "user"],

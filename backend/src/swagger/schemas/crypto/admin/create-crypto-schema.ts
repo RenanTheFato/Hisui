@@ -5,23 +5,23 @@ const validationErrorSchema = z.object({
   code: z.string(),
   error: z.string(),
   message: z.string(),
-}).describe("Input validation failed due to incorrect or missing data.");
+}).describe("Input validation failed due to incorrect or missing data.")
 
 const serviceErrorSchema = z.object({
   error: z.string(),
-}).describe("A business logic error occurred during crypto creation.");
+}).describe("A business logic error occurred during crypto creation.")
 
 const unauthorizedErrorSchema = z.object({
   error: z.string(),
-}).describe("Unauthorized. Missing or invalid user ID.");
+}).describe("Unauthorized. Missing or invalid user ID.")
 
 const forbiddenErrorSchema = z.object({
   error: z.string(),
-}).describe("Forbidden. User does not have ADMIN privileges.");
+}).describe("Forbidden. User does not have ADMIN privileges.")
 
 const internalErrorSchema = z.object({
   error: z.string(),
-}).describe("Unexpected internal server error.");
+}).describe("Unexpected internal server error.")
 
 export const createCryptoSchema = {
   tags: ["crypto", "admin"],
