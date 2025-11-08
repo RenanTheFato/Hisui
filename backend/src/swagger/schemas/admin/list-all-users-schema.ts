@@ -43,7 +43,7 @@ export const listAllUsersSchema = {
     }).describe("Missing or invalid user ID in request."),
 
     401: z.object({
-      message: z.string(),
+      error: z.string(),
     }).describe("Unauthorized. Missing, invalid or expired JWT token."),
 
     403: z.object({

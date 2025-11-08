@@ -42,7 +42,7 @@ export const getPythonServerStatusSchema = {
     }).describe("Python server status successfully retrieved."),
 
     401: z.object({
-      message: z.string(),
+      error: z.string(),
     }).describe("Unauthorized — Missing, invalid or expired JWT token."),
 
     403: z.object({

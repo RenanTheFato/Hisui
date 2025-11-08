@@ -84,7 +84,7 @@ export const viewPETR4ModelInfoSchema = {
     }).describe("Model information successfully retrieved."),
 
     401: z.object({
-      message: z.string(),
+      error: z.string(),
     }).describe("Unauthorized — Missing, invalid or expired JWT token."),
 
     403: z.object({

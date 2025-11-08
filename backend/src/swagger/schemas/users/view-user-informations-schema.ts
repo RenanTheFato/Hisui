@@ -48,7 +48,7 @@ export const viewUserInformationsSchema = {
     }).describe("Missing user ID or user does not exist."),
 
     401: z.object({
-      message: z.string(),
+      error: z.string(),
     }).describe("Unauthorized. Missing, invalid or expired JWT token."),
 
     500: z.object({

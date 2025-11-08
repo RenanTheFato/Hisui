@@ -111,7 +111,7 @@ export const predictPETR4Schema = {
     }).describe("Validation Error — Invalid or missing input."),
 
     401: z.object({
-      message: z.string(),
+      error: z.string(),
     }).describe("Unauthorized — Missing, invalid, or expired JWT token."),
 
     500: z.object({
