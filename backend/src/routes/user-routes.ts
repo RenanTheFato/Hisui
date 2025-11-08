@@ -13,6 +13,7 @@ import { verifyEmailSchema } from "../swagger/schemas/users/verify-email-schema.
 import { FastifyTypedInstance } from "../@types/fastify-types.js";
 import { viewUserInformationsSchema } from "../swagger/schemas/users/view-user-informations-schema.js";
 import { ViewUserInformationsController } from "../controllers/users/view-user-informations-controller.js";
+import { SetUserPreferencesController } from "../controllers/users/set-user-preferences-controller.js";
 
 export async function userRoutes(fastify: FastifyTypedInstance) {
   fastify.post("/create-user", { schema: createUserSchema }, async (req: FastifyRequest, rep: FastifyReply) => {
@@ -33,6 +34,10 @@ export async function userRoutes(fastify: FastifyTypedInstance) {
 
   fastify.patch("/reset-password", { preHandler: [authentication], schema: resetPasswordSchema }, async (req: FastifyRequest, rep: FastifyReply) => {
     return new ResetPasswordController().handle(req, rep)
+  })
+
+  fastify.patch("/set-preferences", { preHandler: [authentication]}, async (req: FastifyRequest, rep: FastifyReply) => {
+    return new SetUserPreferencesController().handle(req, rep)
   })
 
   fastify.get("/view-user-informations", { preHandler: [authentication], schema: viewUserInformationsSchema }, async (req: FastifyRequest, rep: FastifyReply) => {
