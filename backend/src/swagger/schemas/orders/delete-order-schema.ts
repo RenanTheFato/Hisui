@@ -1,5 +1,11 @@
 import { z } from "zod/v4";
 
+const validationErrorSchema = z.object({
+  statusCode: z.literal(400),
+  error: z.string(),
+  message: z.string(),
+}).describe("Bad Request — Missing or invalid parameters.")
+
 const unauthorizedErrorSchema = z.object({
   error: z.string(),
 }).describe("Unauthorized. Missing or invalid user ID.")
@@ -19,9 +25,7 @@ const internalErrorSchema = z.object({
 export const deleteOrderSchema = {
   tags: ["orders"],
   summary: "Delete an existing order",
-  description: `
-Deletes a specific order belonging to the authenticated user.  
-The user must be the creator of the order. Requires authentication.`,
+  description: `Deletes a specific order belonging to the authenticated user.The user must be the creator of the order. Requires authentication.`,
   security: [{ bearerAuth: [] }],
 
   params: z.object({
@@ -33,9 +37,7 @@ The user must be the creator of the order. Requires authentication.`,
   response: {
     204: z.object({}).describe("Order deleted successfully (no content)."),
 
-    400: z.object({
-      error: z.string(),
-    }).describe("Bad Request — Missing or invalid parameters."),
+    400: validationErrorSchema.describe("Bad Request — Validation failure or missing parameters."),
 
     401: unauthorizedErrorSchema.describe("Unauthorized — Missing or invalid user ID."),
 
@@ -44,5 +46,5 @@ The user must be the creator of the order. Requires authentication.`,
     404: notFoundErrorSchema.describe("Not Found — The specified order does not exist."),
 
     500: internalErrorSchema.describe("Internal Server Error — Unexpected failure during order deletion."),
-  }
+  },
 }
