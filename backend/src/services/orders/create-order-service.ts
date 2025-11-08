@@ -100,11 +100,16 @@ export class CreateOrderService {
       },
       select: {
         email: true,
-        username: true
+        username: true,
+        userPreferences: {
+          select: {
+            allow_orders_notifications: true,
+          }
+        }
       }
     })
 
-    if (user && user.email) {
+    if (user && user.email && user.userPreferences?.allow_orders_notifications === true) {
       sendOrderConfirmationEmail({
         email: user.email,
         username: user.username,
