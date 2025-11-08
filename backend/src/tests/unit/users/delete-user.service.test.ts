@@ -1,8 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { DeleteUserService } from "../../services/users/delete-user-service.js";
-import { prisma } from "../../config/prisma.js";
+import { DeleteUserService } from "../../../services/users/delete-user-service.js";
+import { prisma } from "../../../config/prisma.js";
 
-vi.mock("../../config/prisma.js", () => ({
+vi.mock("../../../config/prisma.js", () => ({
   prisma: {
     users: {
       findUnique: vi.fn(),

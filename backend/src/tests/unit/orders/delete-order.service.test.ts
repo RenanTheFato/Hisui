@@ -1,8 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { DeleteOrderService } from "../../services/orders/delete-order-service.js";
-import { prisma } from "../../config/prisma.js";
+import { DeleteOrderService } from "../../../services/orders/delete-order-service.js";
+import { prisma } from "../../../config/prisma.js";
 
-vi.mock("../../config/prisma.js", () => ({
+vi.mock("../../../config/prisma.js", () => ({
   prisma: {
     orders: {
       findFirst: vi.fn(),

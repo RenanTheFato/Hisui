@@ -1,9 +1,9 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { ViewPortfolioAssetsService } from "../../services/portfolio/view-portfolio-assets-service.js";
-import { prisma } from "../../config/prisma.js";
+import { ViewPortfolioAssetsService } from "../../../services/portfolio/view-portfolio-assets-service.js";
+import { prisma } from "../../../config/prisma.js";
 import { AssetType, Action, Prisma } from "@prisma/client";
 
-vi.mock("../../config/prisma.js", () => ({
+vi.mock("../../../config/prisma.js", () => ({
   prisma: {
     portfolio: { findFirst: vi.fn() },
     orders: { findMany: vi.fn() },

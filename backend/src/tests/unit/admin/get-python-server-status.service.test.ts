@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { GetPythonServerStatusService } from '../../services/machine/admin/get-python-server-status-service.js';
+import { GetPythonServerStatusService } from '../../../services/machine/admin/get-python-server-status-service.js';
 
 const mockFetch = vi.fn()
 vi.stubGlobal('fetch', mockFetch)

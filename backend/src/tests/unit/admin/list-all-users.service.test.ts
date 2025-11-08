@@ -1,8 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { ListAllUsersService } from "../../services/admin/list-all-users-service.js";
-import { prisma } from "../../config/prisma.js";
+import { ListAllUsersService } from "../../../services/admin/list-all-users-service.js";
+import { prisma } from "../../../config/prisma.js";
 
-vi.mock("../../config/prisma.js", () => ({
+vi.mock("../../../config/prisma.js", () => ({
   prisma: {
     users: {
       findMany: vi.fn(),

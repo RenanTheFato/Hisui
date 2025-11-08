@@ -1,8 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { CreateStockService } from "../../services/stocks/admin/create-stock-service.js";
-import { prisma } from "../../config/prisma.js";
+import { CreateStockService } from "../../../services/stocks/admin/create-stock-service.js";
+import { prisma } from "../../../config/prisma.js";
 
-vi.mock("../../config/prisma.js", () => ({
+vi.mock("../../../config/prisma.js", () => ({
   prisma: {
     stocks: {
       findFirst: vi.fn(),

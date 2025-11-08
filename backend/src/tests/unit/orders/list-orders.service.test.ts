@@ -1,9 +1,9 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { ListOrdersService } from '../../services/orders/list-orders-service.js';
-import { prisma } from '../../config/prisma.js';
+import { ListOrdersService } from '../../../services/orders/list-orders-service.js';
+import { prisma } from '../../../config/prisma.js';
 import { AssetType, Action, Prisma } from '@prisma/client';
 
-vi.mock('../../config/prisma.js', () => ({
+vi.mock('../../../config/prisma.js', () => ({
   prisma: {
     orders: {
       findMany: vi.fn(),

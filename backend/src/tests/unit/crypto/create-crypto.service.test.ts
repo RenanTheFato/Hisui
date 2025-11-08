@@ -1,8 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { CreateCryptoService } from "../../services/crypto/admin/create-crypto-service.js";
-import { prisma } from "../../config/prisma.js";
+import { CreateCryptoService } from "../../../services/crypto/admin/create-crypto-service.js";
+import { prisma } from "../../../config/prisma.js";
 
-vi.mock("../../config/prisma.js", () => ({
+vi.mock("../../../config/prisma.js", () => ({
   prisma: {
     cryptos: {
       findFirst: vi.fn(),

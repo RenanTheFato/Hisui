@@ -1,9 +1,9 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { CreateOrderService } from "../../services/orders/create-order-service.js";
-import { prisma } from "../../config/prisma.js";
-import { sendOrderConfirmationEmail } from "../../packages/order-mail-package.js";
+import { CreateOrderService } from "../../../services/orders/create-order-service.js";
+import { prisma } from "../../../config/prisma.js";
+import { sendOrderConfirmationEmail } from "../../../packages/order-mail-package.js";
 
-vi.mock("../../config/prisma.js", () => ({
+vi.mock("../../../config/prisma.js", () => ({
   prisma: {
     portfolio: {
       findFirst: vi.fn(),

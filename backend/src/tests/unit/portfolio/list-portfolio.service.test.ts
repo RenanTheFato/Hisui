@@ -1,8 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { ListPortfolioService } from "../../services/portfolio/list-portfolio-service.js";
-import { prisma } from "../../config/prisma.js";
+import { ListPortfolioService } from "../../../services/portfolio/list-portfolio-service.js";
+import { prisma } from "../../../config/prisma.js";
 
-vi.mock("../../config/prisma.js", () => ({
+vi.mock("../../../config/prisma.js", () => ({
   prisma: {
     portfolio: {
       findMany: vi.fn(),

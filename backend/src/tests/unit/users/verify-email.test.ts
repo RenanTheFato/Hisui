@@ -1,9 +1,9 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { VerifyEmailService } from '../../services/users/verify-email-service.js';
-import { prisma } from '../../config/prisma.js';
+import { VerifyEmailService } from '../../../services/users/verify-email-service.js';
+import { prisma } from '../../../config/prisma.js';
 import { Role } from '@prisma/client';
 
-vi.mock('../../config/prisma.js', () => ({
+vi.mock('../../../config/prisma.js', () => ({
   prisma: {
     users: {
       findFirst: vi.fn(),

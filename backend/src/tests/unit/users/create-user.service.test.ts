@@ -1,10 +1,10 @@
 import { describe, it, expect, vi, beforeAll, beforeEach } from "vitest";
-import { CreateUserService } from "../../services/users/create-user-service.js";
-import { prisma } from "../../config/prisma.js";
+import { CreateUserService } from "../../../services/users/create-user-service.js";
+import { prisma } from "../../../config/prisma.js";
 import { Role } from "@prisma/client";
-import { generateVerificationToken, getTokenExpiration, sendVerificationEmail } from "../../packages/mail-package.js"
+import { generateVerificationToken, getTokenExpiration, sendVerificationEmail } from "../../../packages/mail-package.js"
 
-vi.mock("../../config/prisma.js", () => ({
+vi.mock("../../../config/prisma.js", () => ({
   prisma: {
     users: {
       findFirst: vi.fn(),

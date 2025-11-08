@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { ViewPETR4ModelInfoService } from '../../services/machine/admin/view-petr4-model-info-service.js';
+import { ViewPETR4ModelInfoService } from '../../../services/machine/admin/view-petr4-model-info-service.js';
 
 const mockFetch = vi.fn()
 vi.stubGlobal('fetch', mockFetch)
