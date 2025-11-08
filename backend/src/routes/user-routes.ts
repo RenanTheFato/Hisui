@@ -14,6 +14,7 @@ import { FastifyTypedInstance } from "../@types/fastify-types.js";
 import { viewUserInformationsSchema } from "../swagger/schemas/users/view-user-informations-schema.js";
 import { ViewUserInformationsController } from "../controllers/users/view-user-informations-controller.js";
 import { SetUserPreferencesController } from "../controllers/users/set-user-preferences-controller.js";
+import { setUserPreferencesSchema } from "../swagger/schemas/users/user-prefereces-schema.js";
 
 export async function userRoutes(fastify: FastifyTypedInstance) {
   fastify.post("/create-user", { schema: createUserSchema }, async (req: FastifyRequest, rep: FastifyReply) => {
@@ -36,7 +37,7 @@ export async function userRoutes(fastify: FastifyTypedInstance) {
     return new ResetPasswordController().handle(req, rep)
   })
 
-  fastify.patch("/set-preferences", { preHandler: [authentication]}, async (req: FastifyRequest, rep: FastifyReply) => {
+  fastify.patch("/set-preferences", { preHandler: [authentication], schema: setUserPreferencesSchema }, async (req: FastifyRequest, rep: FastifyReply) => {
     return new SetUserPreferencesController().handle(req, rep)
   })
 
