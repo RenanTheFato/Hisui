@@ -7,6 +7,7 @@ import { ViewPortfolioAssetsController } from "../controllers/portfolio/view-por
 import { createPortfolioSchema } from "../swagger/schemas/portfolio/create-portfolio-schema.js";
 import { listPortfolioSchema } from "../swagger/schemas/portfolio/list-portfolio-schema.js";
 import { viewPortfolioAssetsSchema } from "../swagger/schemas/portfolio/view-portfolio-assets-schema.js";
+import { PatchPortfolioController } from "../controllers/portfolio/patch-portfolio-controller.js";
 
 export async function portfolioRoutes(fastify: FastifyTypedInstance) {
 
@@ -21,4 +22,9 @@ export async function portfolioRoutes(fastify: FastifyTypedInstance) {
   fastify.get("/portfolio/assets/:portfolioId", { preHandler: [authentication], schema: viewPortfolioAssetsSchema }, async (req: FastifyRequest, rep: FastifyReply) => {
     return new ViewPortfolioAssetsController().handle(req, rep)
   })
+
+  fastify.patch("/portfolio/patch/:portfolioId", { preHandler: [authentication]}, async (req: FastifyRequest, rep: FastifyReply) => {
+    return new PatchPortfolioController().handle(req, rep)
+  })
+  
 }
