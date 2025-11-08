@@ -8,6 +8,7 @@ import { createPortfolioSchema } from "../swagger/schemas/portfolio/create-portf
 import { listPortfolioSchema } from "../swagger/schemas/portfolio/list-portfolio-schema.js";
 import { viewPortfolioAssetsSchema } from "../swagger/schemas/portfolio/view-portfolio-assets-schema.js";
 import { PatchPortfolioController } from "../controllers/portfolio/patch-portfolio-controller.js";
+import { DeletePortfolioController } from "../controllers/portfolio/delete-portfolio-controller.js";
 
 export async function portfolioRoutes(fastify: FastifyTypedInstance) {
 
@@ -26,5 +27,8 @@ export async function portfolioRoutes(fastify: FastifyTypedInstance) {
   fastify.patch("/portfolio/patch/:portfolioId", { preHandler: [authentication]}, async (req: FastifyRequest, rep: FastifyReply) => {
     return new PatchPortfolioController().handle(req, rep)
   })
-  
+
+  fastify.delete("/portfolio/delete/:portfolioId", { preHandler: [authentication]}, async (req: FastifyRequest, rep: FastifyReply) => {
+    return new DeletePortfolioController().handle(req, rep)
+  })
 }
