@@ -193,6 +193,8 @@ poetry run start-server
 
     BACKEND_URL="address_of_backend_with_host_and_port"
 
+    MASSIVE_API_KEY="your_massive_api_key"
+
     PYTHON_SERVER_URL="http://your_python_server_url"
   ```
 
