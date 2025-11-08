@@ -135,6 +135,22 @@ Para que ele funcione corretamente, siga os passos abaixo:
 
 ---
 
+### 📰 Configurando API Externa de Notícias
+
+O projeto utiliza a API da **Massive** para obter notícias sobre o mercado.  
+Para que funcione corretamente, siga os passos abaixo:
+
+1. **Cadastre-se no site da Massive**.  
+   - Site Oficial: [Massive](https://massive.com/).
+2. **Gere a sua Chave de API no Dashboard** 
+3. Configure a variável de ambiente no arquivo `.env`:
+
+   ```env
+    MASSIVE_API_KEY="sua_chave_api_gerada"
+   ```
+
+---
+
 ## Python
 
 ```bash
