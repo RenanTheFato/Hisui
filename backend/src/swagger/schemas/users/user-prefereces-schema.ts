@@ -21,7 +21,7 @@ const internalErrorSchema = z.object({
 
 
 export const setUserPreferencesSchema = {
-  tags: ["users"],
+  tags: ["user"],
   summary: "Update user notification preferences",
   description: "Allows authenticated users to update their notification preferences. Each field is optional, and only provided values will be updated.",
   security: [{ bearerAuth: [] }],
