@@ -21,7 +21,7 @@ vi.mock("../../../config/prisma.js", () => ({
   },
 }))
 
-vi.mock("../../packages/order-mail-package.js", () => ({
+vi.mock("../../../packages/order-mail-package.js", () => ({
   sendOrderConfirmationEmail: vi.fn().mockResolvedValue(undefined),
 }))
 
@@ -47,7 +47,16 @@ describe("CreateOrderService", () => {
 
   const mockPortfolio = { id: mockPortfolioId, user_id: mockUserId }
   const mockStock = { id: 1, ticker: mockTicker, name: "Petrobras" }
-  const mockUser = { email: "test@example.com", username: "Test User" }
+  const mockUser = {
+    email: "test@example.com",
+    username: "Test User",
+    userPreferences: {
+      user_id: mockUserId,
+      allow_news_notifications: true,
+      allow_orders_notifications: true,
+      allow_updates_notifications: true,
+    }
+  }
   const mockNewOrder = { id: "order-789", ...mockOrder }
 
   beforeEach(() => {

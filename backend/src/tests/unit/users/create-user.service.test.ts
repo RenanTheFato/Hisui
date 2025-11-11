@@ -13,7 +13,7 @@ vi.mock("../../../config/prisma.js", () => ({
   },
 }))
 
-vi.mock("../../packages/mail-package.js", () => ({
+vi.mock("../../../packages/mail-package.js", () => ({
   generateVerificationToken: vi.fn(),
   getTokenExpiration: vi.fn(),
   sendVerificationEmail: vi.fn(),
