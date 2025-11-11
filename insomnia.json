@@ -145,7 +145,7 @@
                             "meta": {
                                 "id": "req_b42f838b188a4fc2b3f43c755c779fbb",
                                 "created": 1757544792018,
-                                "modified": 1757889277097,
+                                "modified": 1762547591958,
                                 "isPrivate": false,
                                 "description": "",
                                 "sortKey": -1757544793593
@@ -182,7 +182,7 @@
                             "meta": {
                                 "id": "req_4b87c4544d8241369ad7d72905812169",
                                 "created": 1757545121243,
-                                "modified": 1757890115789,
+                                "modified": 1762608817500,
                                 "isPrivate": false,
                                 "description": "",
                                 "sortKey": -1757545121243
@@ -190,7 +190,7 @@
                             "method": "POST",
                             "body": {
                                 "mimeType": "application/json",
-                                "text": "{\n\t\"email\": \"renan.thefato.dev@gmail.com\",\n\t\"password\": \"*SenhaTeste123\"\n}"
+                                "text": "{\n\t\"email\": \"renan.thefato.dev@gmail.com\",\n\t\"password\": \"*Renan070\"\n}"
                             },
                             "headers": [
                                 {
@@ -299,6 +299,47 @@
                             "authentication": {
                                 "type": "bearer",
                                 "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZjdjOTg0LWU4MGQtNDlkMC05MDM4LWM1NjIxMGU0Y2UyMyIsImlhdCI6MTc1Nzg4OTY2NSwiZXhwIjoxNzU3OTExMjY1fQ.Khj4LIyaXCyXipLXvp_VUIhJ1_YmIakXKrz7prS-Mls"
+                            },
+                            "settings": {
+                                "renderRequestBody": true,
+                                "encodeUrl": true,
+                                "followRedirects": "global",
+                                "cookies": {
+                                    "send": true,
+                                    "store": true
+                                },
+                                "rebuildPath": true
+                            }
+                        },
+                        {
+                            "url": "localhost:3333/set-preferences",
+                            "name": "Set User Preferences",
+                            "meta": {
+                                "id": "req_7505cdd0279048babda19d85c2e193e2",
+                                "created": 1762608796788,
+                                "modified": 1762609212755,
+                                "isPrivate": false,
+                                "description": "",
+                                "sortKey": -1762608796788
+                            },
+                            "method": "PATCH",
+                            "body": {
+                                "mimeType": "application/json",
+                                "text": "{\n\t\"allow_orders_notifications\": true\n}"
+                            },
+                            "headers": [
+                                {
+                                    "name": "Content-Type",
+                                    "value": "application/json"
+                                },
+                                {
+                                    "name": "User-Agent",
+                                    "value": "insomnia/12.0.0"
+                                }
+                            ],
+                            "authentication": {
+                                "type": "bearer",
+                                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYyZjQwNjMxLTA3MjUtNDVjZi1iMWQ4LTk3ZTU1ZDgxODk4ZSIsImlhdCI6MTc2MjYwODgxOCwiZXhwIjoxNzYyNjMwNDE4fQ.QMyLVI4_DyshGjCrpTlElFgiMtuRAfjgTVbUkah1ztA"
                             },
                             "settings": {
                                 "renderRequestBody": true,
@@ -472,7 +513,7 @@
                             "meta": {
                                 "id": "req_dc13b140a0c443eaae2b386f9bc46c19",
                                 "created": 1761747058506,
-                                "modified": 1762028598922,
+                                "modified": 1762633902581,
                                 "isPrivate": false,
                                 "description": "",
                                 "sortKey": -1761747078142
@@ -480,7 +521,7 @@
                             "method": "POST",
                             "body": {
                                 "mimeType": "application/json",
-                                "text": "{\n\t\"name\": \"Wallet Portfolio\",\n\t\"description\": \"Wallet\"\n}"
+                                "text": "{\n\t\"name\": \"Delete Portfolio\",\n\t\"description\": \"Delete\"\n}"
                             },
                             "headers": [
                                 {
@@ -494,7 +535,7 @@
                             ],
                             "authentication": {
                                 "type": "bearer",
-                                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM5YzQ1ODBhLTIzM2YtNGI4YS05NTE5LTlhMzE0NGZlNWQ2NiIsImlhdCI6MTc2MjAyODU4NSwiZXhwIjoxNzYyMDUwMTg1fQ.ghLZubGzHomjhGIo8i5O25dFxPlosQhDW0OjbnoGrBk"
+                                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYyZjQwNjMxLTA3MjUtNDVjZi1iMWQ4LTk3ZTU1ZDgxODk4ZSIsImlhdCI6MTc2MjYzMzAwNSwiZXhwIjoxNzYyNjU0NjA1fQ.EBC9Il-R4zxqVtgwvATrDKFReMty6B1n3X2jqKp2BDM"
                             },
                             "settings": {
                                 "renderRequestBody": true,
@@ -525,7 +566,7 @@
                             "meta": {
                                 "id": "req_044d5e8072ee4c0cbb200f229ad40a1d",
                                 "created": 1761829034831,
-                                "modified": 1762028609059,
+                                "modified": 1762633013838,
                                 "isPrivate": false,
                                 "description": "",
                                 "sortKey": -1761829034831
@@ -539,7 +580,7 @@
                             ],
                             "authentication": {
                                 "type": "bearer",
-                                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM5YzQ1ODBhLTIzM2YtNGI4YS05NTE5LTlhMzE0NGZlNWQ2NiIsImlhdCI6MTc2MjAyODU4NSwiZXhwIjoxNzYyMDUwMTg1fQ.ghLZubGzHomjhGIo8i5O25dFxPlosQhDW0OjbnoGrBk"
+                                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYyZjQwNjMxLTA3MjUtNDVjZi1iMWQ4LTk3ZTU1ZDgxODk4ZSIsImlhdCI6MTc2MjYzMzAwNSwiZXhwIjoxNzYyNjU0NjA1fQ.EBC9Il-R4zxqVtgwvATrDKFReMty6B1n3X2jqKp2BDM"
                             },
                             "settings": {
                                 "renderRequestBody": true,
@@ -553,12 +594,12 @@
                             }
                         },
                         {
-                            "url": "localhost:3333/portfolio/assets/fd4183c0-0912-4e03-862f-a8283cea86ff",
+                            "url": "localhost:3333/portfolio/assets/3fb2c1ca-baa3-4f08-94cb-007be456db8e",
                             "name": "View Portfolio Assets",
                             "meta": {
                                 "id": "req_089cf0cc933d487eaf3106ef64e50c02",
                                 "created": 1761917753189,
-                                "modified": 1761918006137,
+                                "modified": 1762624178468,
                                 "isPrivate": false,
                                 "description": "",
                                 "sortKey": -1761917753189
@@ -572,7 +613,105 @@
                             ],
                             "authentication": {
                                 "type": "bearer",
-                                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZhYzhmNjZhLWQwMzUtNGY5OC04MjY0LTk0NTFmYzhkOWU2YyIsImlhdCI6MTc2MTkxNzc2OSwiZXhwIjoxNzYxOTM5MzY5fQ.JBGsxVe1QEar2u83sYbBl7pcDs_EKE76Ccn5edHn0xg"
+                                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYyZjQwNjMxLTA3MjUtNDVjZi1iMWQ4LTk3ZTU1ZDgxODk4ZSIsImlhdCI6MTc2MjYyNDAxNSwiZXhwIjoxNzYyNjQ1NjE1fQ.mRfUK1k82fdqesczmPrh5Hz7MIj9FkSLYHDw5uv2c8E"
+                            },
+                            "settings": {
+                                "renderRequestBody": true,
+                                "encodeUrl": true,
+                                "followRedirects": "global",
+                                "cookies": {
+                                    "send": true,
+                                    "store": true
+                                },
+                                "rebuildPath": true
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "PATCH",
+                    "meta": {
+                        "id": "fld_171a1db448dc46ada06d430a6c39edf6",
+                        "created": 1762632965387,
+                        "modified": 1762632967096,
+                        "sortKey": -1762632965387,
+                        "description": ""
+                    },
+                    "children": [
+                        {
+                            "url": "localhost:3333/portfolio/patch/61f6bbec-c08f-4b0b-a5f4-177895ac5fb5",
+                            "name": "Patch Portfolio",
+                            "meta": {
+                                "id": "req_cc0881810adc4955a5c8bea8dbb12c2d",
+                                "created": 1762632968053,
+                                "modified": 1762633131171,
+                                "isPrivate": false,
+                                "description": "",
+                                "sortKey": -1762632968053
+                            },
+                            "method": "PATCH",
+                            "body": {
+                                "mimeType": "application/json",
+                                "text": "{\n\t\"name\": \"Wallet\",\n\t\"description\": \"Wallet\"\n}"
+                            },
+                            "headers": [
+                                {
+                                    "name": "Content-Type",
+                                    "value": "application/json"
+                                },
+                                {
+                                    "name": "User-Agent",
+                                    "value": "insomnia/12.0.0"
+                                }
+                            ],
+                            "authentication": {
+                                "type": "bearer",
+                                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYyZjQwNjMxLTA3MjUtNDVjZi1iMWQ4LTk3ZTU1ZDgxODk4ZSIsImlhdCI6MTc2MjYzMzAwNSwiZXhwIjoxNzYyNjU0NjA1fQ.EBC9Il-R4zxqVtgwvATrDKFReMty6B1n3X2jqKp2BDM"
+                            },
+                            "settings": {
+                                "renderRequestBody": true,
+                                "encodeUrl": true,
+                                "followRedirects": "global",
+                                "cookies": {
+                                    "send": true,
+                                    "store": true
+                                },
+                                "rebuildPath": true
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "DELETE",
+                    "meta": {
+                        "id": "fld_1156b17d6e4743229dba6b5fab974154",
+                        "created": 1762633819651,
+                        "modified": 1762633819651,
+                        "sortKey": -1762633819651,
+                        "description": ""
+                    },
+                    "children": [
+                        {
+                            "url": "localhost:3333/portfolio/delete/10004a57-1909-44ba-8885-4a1e269b47e8",
+                            "name": "Delete Portfolio",
+                            "meta": {
+                                "id": "req_ba013e5066144c3098e87011accbf559",
+                                "created": 1762633822205,
+                                "modified": 1762633919562,
+                                "isPrivate": false,
+                                "description": "",
+                                "sortKey": -1762633822205
+                            },
+                            "method": "DELETE",
+                            "headers": [
+                                {
+                                    "name": "User-Agent",
+                                    "value": "insomnia/12.0.0"
+                                }
+                            ],
+                            "authentication": {
+                                "type": "bearer",
+                                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYyZjQwNjMxLTA3MjUtNDVjZi1iMWQ4LTk3ZTU1ZDgxODk4ZSIsImlhdCI6MTc2MjYzMzAwNSwiZXhwIjoxNzYyNjU0NjA1fQ.EBC9Il-R4zxqVtgwvATrDKFReMty6B1n3X2jqKp2BDM"
                             },
                             "settings": {
                                 "renderRequestBody": true,
@@ -615,7 +754,7 @@
                             "meta": {
                                 "id": "req_af75e06b96a14bb09ccb26bfd383cde0",
                                 "created": 1761505036069,
-                                "modified": 1761589557955,
+                                "modified": 1762624198635,
                                 "isPrivate": false,
                                 "description": "",
                                 "sortKey": -1761505036069
@@ -637,7 +776,7 @@
                             ],
                             "authentication": {
                                 "type": "bearer",
-                                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZhYzhmNjZhLWQwMzUtNGY5OC04MjY0LTk0NTFmYzhkOWU2YyIsImlhdCI6MTc2MTU4OTI0NCwiZXhwIjoxNzYxNjEwODQ0fQ.kNHowRbxCMfY0saNscUBCSq7mk1Ea_BNwg8ve60OBO8"
+                                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYyZjQwNjMxLTA3MjUtNDVjZi1iMWQ4LTk3ZTU1ZDgxODk4ZSIsImlhdCI6MTc2MjYyNDAxNSwiZXhwIjoxNzYyNjQ1NjE1fQ.mRfUK1k82fdqesczmPrh5Hz7MIj9FkSLYHDw5uv2c8E"
                             },
                             "settings": {
                                 "renderRequestBody": true,
@@ -713,7 +852,7 @@
                             "meta": {
                                 "id": "req_423813e1d7b24870b01bfeb7e6f6c8a1",
                                 "created": 1761520430612,
-                                "modified": 1761589648349,
+                                "modified": 1762624193255,
                                 "isPrivate": false,
                                 "description": "",
                                 "sortKey": -1761520430612
@@ -735,7 +874,7 @@
                             ],
                             "authentication": {
                                 "type": "bearer",
-                                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZhYzhmNjZhLWQwMzUtNGY5OC04MjY0LTk0NTFmYzhkOWU2YyIsImlhdCI6MTc2MTU4OTI0NCwiZXhwIjoxNzYxNjEwODQ0fQ.kNHowRbxCMfY0saNscUBCSq7mk1Ea_BNwg8ve60OBO8"
+                                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYyZjQwNjMxLTA3MjUtNDVjZi1iMWQ4LTk3ZTU1ZDgxODk4ZSIsImlhdCI6MTc2MjYyNDAxNSwiZXhwIjoxNzYyNjQ1NjE1fQ.mRfUK1k82fdqesczmPrh5Hz7MIj9FkSLYHDw5uv2c8E"
                             },
                             "settings": {
                                 "renderRequestBody": true,
@@ -767,8 +906,8 @@
                     "meta": {
                         "id": "fld_6cca211a0a3147079f6f4fccb34068e0",
                         "created": 1761592272636,
-                        "modified": 1761592272636,
-                        "sortKey": -1761592272636,
+                        "modified": 1762624943724,
+                        "sortKey": -1762624887277,
                         "description": ""
                     },
                     "children": [
@@ -778,7 +917,7 @@
                             "meta": {
                                 "id": "req_3a397bf633fc44ac94661ab25ecf9dbb",
                                 "created": 1761592276150,
-                                "modified": 1761592838721,
+                                "modified": 1762624028437,
                                 "isPrivate": false,
                                 "description": "",
                                 "sortKey": -1761592276150
@@ -786,7 +925,7 @@
                             "method": "POST",
                             "body": {
                                 "mimeType": "application/json",
-                                "text": "{\n\t\"name\": \"Solana\",\n\t\"ticker\": \"SOL\",\n\t\"blockchain\": \"Solana\",\n\t\"protocol\": \"PoS\"\n}"
+                                "text": "{\n\t\"name\": \"XPR\",\n\t\"ticker\": \"XRP\",\n\t\"blockchain\": \"Ripple\",\n\t\"protocol\": \"PoS\"\n}"
                             },
                             "headers": [
                                 {
@@ -800,7 +939,7 @@
                             ],
                             "authentication": {
                                 "type": "bearer",
-                                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZhYzhmNjZhLWQwMzUtNGY5OC04MjY0LTk0NTFmYzhkOWU2YyIsImlhdCI6MTc2MTU5MjI5NSwiZXhwIjoxNzYxNjEzODk1fQ.CTZAigmQ5RLn024K8Cv0bi45Yk4D4kBFcBZ0gQCydio"
+                                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYyZjQwNjMxLTA3MjUtNDVjZi1iMWQ4LTk3ZTU1ZDgxODk4ZSIsImlhdCI6MTc2MjYyNDAxNSwiZXhwIjoxNzYyNjQ1NjE1fQ.mRfUK1k82fdqesczmPrh5Hz7MIj9FkSLYHDw5uv2c8E"
                             },
                             "settings": {
                                 "renderRequestBody": true,
@@ -831,7 +970,7 @@
                             "meta": {
                                 "id": "req_c69684f8105a4c87b1bca92b62e1c451",
                                 "created": 1761593219680,
-                                "modified": 1762026654385,
+                                "modified": 1762548546724,
                                 "isPrivate": false,
                                 "description": "",
                                 "sortKey": -1761593219680
@@ -845,7 +984,60 @@
                             ],
                             "authentication": {
                                 "type": "bearer",
-                                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM5YzQ1ODBhLTIzM2YtNGI4YS05NTE5LTlhMzE0NGZlNWQ2NiIsImlhdCI6MTc2MjAyNjYxNCwiZXhwIjoxNzYyMDQ4MjE0fQ.8o0NwRf5IdCIWhg_JFt6wl-24dHT-wAIj0rtZbDO7GY"
+                                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM5YzQ1ODBhLTIzM2YtNGI4YS05NTE5LTlhMzE0NGZlNWQ2NiIsImlhdCI6MTc2MjU0NjU1MCwiZXhwIjoxNzYyNTY4MTUwfQ.hEMbMQMyRdlqmEhs97e5b2DirSNC6L8GbW2VsYdeR48"
+                            },
+                            "settings": {
+                                "renderRequestBody": true,
+                                "encodeUrl": true,
+                                "followRedirects": "global",
+                                "cookies": {
+                                    "send": true,
+                                    "store": true
+                                },
+                                "rebuildPath": true
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "PATCH",
+                    "meta": {
+                        "id": "fld_a5f9567cd32646c4bed0ef4765c0788e",
+                        "created": 1762548629725,
+                        "modified": 1762624942050,
+                        "sortKey": -1762624887327,
+                        "description": ""
+                    },
+                    "children": [
+                        {
+                            "url": "localhost:3333/crypto/patch/b5c8b4aa-9013-445b-a889-2786252c4940",
+                            "name": "Patch Crypto",
+                            "meta": {
+                                "id": "req_2143c40cb0ac4e74a995fdc1e6904fd0",
+                                "created": 1762548631846,
+                                "modified": 1762624035308,
+                                "isPrivate": false,
+                                "description": "",
+                                "sortKey": -1762548631846
+                            },
+                            "method": "PATCH",
+                            "body": {
+                                "mimeType": "application/json",
+                                "text": "{\n\t\"name\": \"XRP\"\n}"
+                            },
+                            "headers": [
+                                {
+                                    "name": "Content-Type",
+                                    "value": "application/json"
+                                },
+                                {
+                                    "name": "User-Agent",
+                                    "value": "insomnia/12.0.0"
+                                }
+                            ],
+                            "authentication": {
+                                "type": "bearer",
+                                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYyZjQwNjMxLTA3MjUtNDVjZi1iMWQ4LTk3ZTU1ZDgxODk4ZSIsImlhdCI6MTc2MjYyNDAxNSwiZXhwIjoxNzYyNjQ1NjE1fQ.mRfUK1k82fdqesczmPrh5Hz7MIj9FkSLYHDw5uv2c8E"
                             },
                             "settings": {
                                 "renderRequestBody": true,
@@ -883,12 +1075,12 @@
                     },
                     "children": [
                         {
-                            "url": "localhost:3333/order/create/3fb2c1ca-baa3-4f08-94cb-007be456db8e",
+                            "url": "localhost:3333/order/create/61f6bbec-c08f-4b0b-a5f4-177895ac5fb5",
                             "name": "Create Order",
                             "meta": {
                                 "id": "req_38227828aae2420eaceb01d52612cd0d",
                                 "created": 1761747011000,
-                                "modified": 1762029890564,
+                                "modified": 1762609098574,
                                 "isPrivate": false,
                                 "description": "",
                                 "sortKey": -1761747011000
@@ -910,7 +1102,7 @@
                             ],
                             "authentication": {
                                 "type": "bearer",
-                                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM5YzQ1ODBhLTIzM2YtNGI4YS05NTE5LTlhMzE0NGZlNWQ2NiIsImlhdCI6MTc2MjAyODU4NSwiZXhwIjoxNzYyMDUwMTg1fQ.ghLZubGzHomjhGIo8i5O25dFxPlosQhDW0OjbnoGrBk"
+                                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYyZjQwNjMxLTA3MjUtNDVjZi1iMWQ4LTk3ZTU1ZDgxODk4ZSIsImlhdCI6MTc2MjYwODgxOCwiZXhwIjoxNzYyNjMwNDE4fQ.QMyLVI4_DyshGjCrpTlElFgiMtuRAfjgTVbUkah1ztA"
                             },
                             "settings": {
                                 "renderRequestBody": true,
@@ -941,7 +1133,7 @@
                             "meta": {
                                 "id": "req_c0de0878b3ab40b297e1960725de9448",
                                 "created": 1761951051122,
-                                "modified": 1761952586955,
+                                "modified": 1762553818420,
                                 "isPrivate": false,
                                 "description": "",
                                 "sortKey": -1761951062079
@@ -955,7 +1147,7 @@
                             ],
                             "authentication": {
                                 "type": "bearer",
-                                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZhYzhmNjZhLWQwMzUtNGY5OC04MjY0LTk0NTFmYzhkOWU2YyIsImlhdCI6MTc2MTk1MTA5OSwiZXhwIjoxNzYxOTcyNjk5fQ.fWnbPUH6Vp-7Y631KHmPDlPZ5pR1NVoXfOp5NUnMc2s"
+                                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM5YzQ1ODBhLTIzM2YtNGI4YS05NTE5LTlhMzE0NGZlNWQ2NiIsImlhdCI6MTc2MjU1MzgwNSwiZXhwIjoxNzYyNTc1NDA1fQ.eOy8aL2FcrDT8HYcjshSTaKqF0Njb60W6_tjwTimL-E"
                             },
                             "settings": {
                                 "renderRequestBody": true,
@@ -986,7 +1178,7 @@
                             "meta": {
                                 "id": "req_9610e4d9aa364e4cbb34eddc16df3db8",
                                 "created": 1761957185998,
-                                "modified": 1761957507657,
+                                "modified": 1762624144335,
                                 "isPrivate": false,
                                 "description": "",
                                 "sortKey": -1761957185998
@@ -1000,7 +1192,7 @@
                             ],
                             "authentication": {
                                 "type": "bearer",
-                                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImZhYzhmNjZhLWQwMzUtNGY5OC04MjY0LTk0NTFmYzhkOWU2YyIsImlhdCI6MTc2MTk1NzIzNSwiZXhwIjoxNzYxOTc4ODM1fQ.ZIyu7oTOMaFr9HNuo-k_3fwfxAcZvXPnTjbsd_w43Nk"
+                                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYyZjQwNjMxLTA3MjUtNDVjZi1iMWQ4LTk3ZTU1ZDgxODk4ZSIsImlhdCI6MTc2MjYyNDAxNSwiZXhwIjoxNzYyNjQ1NjE1fQ.mRfUK1k82fdqesczmPrh5Hz7MIj9FkSLYHDw5uv2c8E"
                             },
                             "settings": {
                                 "renderRequestBody": true,
@@ -1038,12 +1230,12 @@
                     },
                     "children": [
                         {
-                            "url": "localhost:3333/news/search?published_at=2025-11-03",
+                            "url": "localhost:3333/news/search",
                             "name": "Search News",
                             "meta": {
                                 "id": "req_46bc9aaa124e4e70bba83a624ebec38d",
                                 "created": 1762198799446,
-                                "modified": 1762199807206,
+                                "modified": 1762624266357,
                                 "isPrivate": false,
                                 "description": "",
                                 "sortKey": -1762198799446
@@ -1057,7 +1249,52 @@
                             ],
                             "authentication": {
                                 "type": "bearer",
-                                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImM5YzQ1ODBhLTIzM2YtNGI4YS05NTE5LTlhMzE0NGZlNWQ2NiIsImlhdCI6MTc2MjE5ODgyMSwiZXhwIjoxNzYyMjIwNDIxfQ.xa8F0nJWu3bMWMq5g6GjjpgxXT-QhZ0w8GMiCQ-gIjQ"
+                                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYyZjQwNjMxLTA3MjUtNDVjZi1iMWQ4LTk3ZTU1ZDgxODk4ZSIsImlhdCI6MTc2MjYyNDAxNSwiZXhwIjoxNzYyNjQ1NjE1fQ.mRfUK1k82fdqesczmPrh5Hz7MIj9FkSLYHDw5uv2c8E"
+                            },
+                            "settings": {
+                                "renderRequestBody": true,
+                                "encodeUrl": true,
+                                "followRedirects": "global",
+                                "cookies": {
+                                    "send": true,
+                                    "store": true
+                                },
+                                "rebuildPath": true
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "DELETE",
+                    "meta": {
+                        "id": "fld_ac47ac7474294b4b9df970e3bb1fecb6",
+                        "created": 1762624060587,
+                        "modified": 1762624060587,
+                        "sortKey": -1762624060587,
+                        "description": ""
+                    },
+                    "children": [
+                        {
+                            "url": "localhost:3333/news/delete/3e43a6e58f6ec56e1afac8886629cb57e352da08ad3ef49b1d43c636c90e5921",
+                            "name": "Delete News",
+                            "meta": {
+                                "id": "req_0f1770e4cd6e4559a7e3946bafa9a41f",
+                                "created": 1762624063787,
+                                "modified": 1762624744811,
+                                "isPrivate": false,
+                                "description": "",
+                                "sortKey": -1762624063787
+                            },
+                            "method": "DELETE",
+                            "headers": [
+                                {
+                                    "name": "User-Agent",
+                                    "value": "insomnia/12.0.0"
+                                }
+                            ],
+                            "authentication": {
+                                "type": "bearer",
+                                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImYyZjQwNjMxLTA3MjUtNDVjZi1iMWQ4LTk3ZTU1ZDgxODk4ZSIsImlhdCI6MTc2MjYyNDAxNSwiZXhwIjoxNzYyNjQ1NjE1fQ.mRfUK1k82fdqesczmPrh5Hz7MIj9FkSLYHDw5uv2c8E"
                             },
                             "settings": {
                                 "renderRequestBody": true,
