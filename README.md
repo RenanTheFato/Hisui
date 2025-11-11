@@ -181,21 +181,26 @@ poetry run start-server
 - ### Variáveis Ambiente Backend NodeJs
   - <u><a href="./backend/.env.example">backend/.env.example</a></u>
   ```env
-    HTTP_PORT=NUMBER_OF_PORT
-    HTTP_HOST='host_string'
+   HTTP_PORT=3333
+   HTTP_HOST='0.0.0.0'
 
-    DATABASE_URL="your_database_url"
+   POSTGRES_USER="your_postgres_user"
+   POSTGRES_PASSWORD="your_postgres_password"
+   POSTGRES_DB="your_postgres_database"
 
-    JWT_SECRET="your_strong_secret"
+   DATABASE_URL="postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@localhost:5432/${POSTGRES_DB}"
 
-    EMAIL_USER="email_used_on_nodemailer"
-    EMAIL_PASS="nodemailer_app_password"
+   JWT_SECRET="your_strong_secret"
 
-    BACKEND_URL="address_of_backend_with_host_and_port"
+   EMAIL_USER="email_used_on_nodemailer"
 
-    MASSIVE_API_KEY="your_massive_api_key"
+   EMAIL_PASS="nodemailer_app_password"
 
-    PYTHON_SERVER_URL="http://your_python_server_url"
+   BACKEND_URL="http://localhost:3333"
+
+   MASSIVE_API_KEY="your_massive_api_key"
+
+   PYTHON_SERVER_URL="http://your_python_server_url"
   ```
 
   - ###  Para testes
@@ -205,7 +210,12 @@ poetry run start-server
       HTTP_HOST="test_host_string"
       HTTP_PORT=NUMBER_OF_PORT_FOR_TESTING
 
-      DATABASE_URL="your_test_database_url"
+      POSTGRES_USER="your_postgres_user"
+      POSTGRES_PASSWORD="your_postgres_password"
+      POSTGRES_DB="your_postgres_database"
+
+      DATABASE_URL="postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@localhost:5432/${POSTGRES_DB}"
+
       JWT_SECRET="your_test_strong_secret"
     ```
 
