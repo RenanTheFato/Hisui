@@ -235,6 +235,27 @@ poetry run start-server
     ```
 ---
 
+---
+
+  ## 🐋 Utilização com Docker (Opcional)
+
+  ```bash
+# Subir o container
+docker-compose up -d
+```
+
+```bash
+# Ver os logs do container
+docker-compose logs -f
+```
+
+```bash
+# Interromper a execução do container
+docker-compose down 
+```
+
+---
+
   ## 👨‍💼Acesso a Rotas Administrativas 
 
   Para acessar rotas administrativas irá precisar atualizar um usuário no banco de dados para que contenha o cargo ADMIN
