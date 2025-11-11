@@ -42,6 +42,10 @@ A solução busca oferecer uma estrutura robusta para **armazenamento, análise 
 
 Esse projeto se encaixa como base de uma startup tecnológica, fornecendo um ecossistema escalável e seguro para manipulação de dados, autenticação e comunicação entre serviços.
 
+## 📈 Objetivo do Projeto
+
+O Hisui resolve o problema da desorganização e falta de clareza na gestão de investimentos, oferecendo um ambiente unificado que combina **notícias financeiras atualizadas** e uma área de **organização de ativos**. A plataforma simplifica a análise e acompanhamento de carteiras, reduzindo a confusão entre múltiplas fontes de informação. Ao integrar indicadores técnicos, modelos preditivos e contexto econômico global, o sistema **ajuda investidores** a tomar decisões mais conscientes e seguras. Promovemos a educação financeira, autonomia e melhor planejamento patrimonial, gerando um impacto positivo na forma como as pessoas lidam com seus investimentos.
+
 ---
 
 ## 🎥 Vídeo Sobre A Hisui
